@@ -1,0 +1,17 @@
+<launch>
+
+  <node pkg = "rospkg-ogamesure"
+        name = "fsw0000"
+        type = "fsw0000.py">
+        <param name="~host" value="" />
+        <param name="~port" value="" />
+    <remap from = '/dev/fsw0000/ip/f_cmd' to = ''/>
+    <remap from = '/dev/fsw0000/ip/p_cmd' to = ''/>
+    <remap from = '/dev/fsw0000/ip/onoff_cmd' to = ''/>
+    <remap from = '/dev/fsw0000/ip/freq' to = ''/>
+    <remap from = '/dev/fsw0000/ip/power' to = ''/>
+    <remap from = '/dev/fsw0000/ip/onoff' to = ''/>
+
+  </node>
+
+</launch>
