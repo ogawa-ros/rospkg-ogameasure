@@ -1,0 +1,17 @@
+<launch>
+
+  <node pkg = "rospkg-ogamesure"
+        name = "e8257d"
+        type = "e8257d.py">
+        <param name="~host" value="" />
+        <param name="~port" value="" />
+    <remap from = '/dev/e8257d/ip/f_cmd' to = ''/>
+    <remap from = '/dev/e8257d/ip/p_cmd' to = ''/>
+    <remap from = '/dev/e8257d/ip/onoff_cmd' to = ''/>
+    <remap from = '/dev/e8257d/ip/freq' to = ''/>
+    <remap from = '/dev/e8257d/ip/power' to = ''/>
+    <remap from = '/dev/e8257d/ip/onoff' to = ''/>
+
+  </node>
+
+</launch>
