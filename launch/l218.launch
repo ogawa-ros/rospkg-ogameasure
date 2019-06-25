@@ -8,10 +8,10 @@
         <param name="~node" value="" />
         <param name="~ch" value="" />
 
-    <remap from = '/dev/218/ip/ch1' to = ''/>
-    <remap from = '/dev/218/ip/ch2' to = ''/>
-    <remap from = '/dev/218/ip/ch3' to = ''/>
-    <remap from = '/dev/218/ip/ch4' to = ''/>
+    <remap from = '/dev/218/__IP__/ch1' to = ''/>
+    <remap from = '/dev/218/__IP__/ch2' to = ''/>
+    <remap from = '/dev/218/__IP__/ch3' to = ''/>
+    <remap from = '/dev/218/__IP__/ch4' to = ''/>
 
 
   </node>

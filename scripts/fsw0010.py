@@ -17,12 +17,12 @@ class fsw0010(self):
         com = ogameasure.ethernet(host, port)
         self.sg = ogameasure.Phasematrix.FSW0010(host,port)
 
-        self.query_freq = rospy.Publisher("/dev/fsw0010/ip/f_cmd", Float64, queue_size=1)
-        self.query_power = rospy.Publisher("/dev/fsw0010/ip/p_cmd", Float64, queue_size=1)
-        self.query_onoff = rospy.Publisher("/dev/fsw0010/ip/onoff_cmd", String, queue_size=1)
-        rospy.Subscriber("/dev/fsw0010/ip/freq", Float64, self.set_freq)
-        rospy.Subscriber("/dev/fsw0010/ip/power", Float64, self.set_power)
-        rospy.Subscriber("/dev/fsw0010/ip/onoff", String, self.set_onoff)
+        self.query_freq = rospy.Publisher("/dev/fsw0010/__IP__/freq_cmd", Float64, queue_size=1)
+        self.query_power = rospy.Publisher("/dev/fsw0010/__IP__/power_cmd", Float64, queue_size=1)
+        self.query_onoff = rospy.Publisher("/dev/fsw0010/__IP__/onoff_cmd", String, queue_size=1)
+        rospy.Subscriber("/dev/fsw0010/__IP__/freq", Float64, self.set_freq)
+        rospy.Subscriber("/dev/fsw0010/__IP__/power", Float64, self.set_power)
+        rospy.Subscriber("/dev/fsw0010/__IP__/onoff", String, self.set_onoff)
 
     def set_freq(self,q):
         self.sg.freq_set(q.data)

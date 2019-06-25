@@ -7,7 +7,7 @@
         <param name="~gpibport" value="" />
         <param name="~node" value="" />
 
-    <remap from = '/dev/GPDVC15/ip/' to = ''/>
+    <remap from = '/dev/gpdvc15_100rs/__IP__/' to = ''/>
 
   </node>
 

@@ -16,7 +16,7 @@ class GPDVC15(self):
         gpibport = rospy.get_param("~gpibport")
         com = ogameasure.gpib_prologix(host, gpibport)
         self.loatt = ogameasure.ELVA1.GPDVC15(com)
-        rospy.Subscriber("/dev/GPDVC15/ip/onoff", String, self.set_output)
+        rospy.Subscriber("/dev/GPDVC15/__IP__/onoff", String, self.set_output)
 
     def set_output(self):
         self.loatt.output_set(q.data)

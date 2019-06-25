@@ -5,12 +5,12 @@
         type = "fsw0010.py">
         <param name="~host" value="" />
         <param name="~port" value="" />
-    <remap from = '/dev/fsw0000/ip/f_cmd' to = ''/>
-    <remap from = '/dev/fsw0000/ip/p_cmd' to = ''/>
-    <remap from = '/dev/fsw0000/ip/onoff_cmd' to = ''/>
-    <remap from = '/dev/fsw0000/ip/freq' to = ''/>
-    <remap from = '/dev/fsw0000/ip/power' to = ''/>
-    <remap from = '/dev/fsw0000/ip/onoff' to = ''/>
+    <remap from = '/dev/fsw0000/__IP__/freq_cmd' to = ''/>
+    <remap from = '/dev/fsw0000/__IP__/power_cmd' to = ''/>
+    <remap from = '/dev/fsw0000/__IP__/onoff_cmd' to = ''/>
+    <remap from = '/dev/fsw0000/__IP__/freq' to = ''/>
+    <remap from = '/dev/fsw0000/__IP__/power' to = ''/>
+    <remap from = '/dev/fsw0000/__IP__/onoff' to = ''/>
 
   </node>
 
