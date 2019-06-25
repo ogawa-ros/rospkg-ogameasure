@@ -4,7 +4,7 @@
         name = "GPDVC15"
         type = "GPDVC15.py">
         <param name="~host" value="" />
-        <param name="~port" value="" />
+        <param name="~gpibport" value="" />
         <param name="~node" value="" />
 
     <remap from = '/dev/GPDVC15/ip/' to = ''/>

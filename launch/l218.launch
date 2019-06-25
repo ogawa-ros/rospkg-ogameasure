@@ -4,7 +4,7 @@
         name = "l218"
         type = "l218.py">
         <param name="~host" value="" />
-        <param name="~port" value="" />
+        <param name="~gpibport" value="" />
         <param name="~node" value="" />
         <param name="~ch" value="" />
 

@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-name = "e8257"
+name = "fsw0010"
 
 import time
 import sys
@@ -10,19 +10,19 @@ from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Int32
 
-class e8257(self):
+class fsw0010(self):
     def __init__(self):
         host = rospy.get_param("~host")
         port = rospy.get_param("~port")
         com = ogameasure.ethernet(host, port)
-        self.sg = ogameasure.Agilent.e8257(com)
+        self.sg = ogameasure.Phasematrix.FSW0010(host,port)
 
-        self.query_freq　= rospy.Publisher("/dev/e8257/ip/f_cmd", Float64, queue_size=1)
-        self.query_power = rospy.Publisher("/dev/e8257/ip/p_cmd", Float64, queue_size=1)
-        self.query_onoff = rospy.Publisher("/dev/e8257/ip/onoff_cmd", String, queue_size=1)
-        rospy.Subscriber("/dev/e8257/ip/freq", Float64, self.set_freq)
-        rospy.Subscriber("/dev/e8257/ip/power", Float64, self.set_power)
-        rospy.Subscriber("/dev/e8257/ip/onoff", String, self.set_onoff)
+        self.query_freq = rospy.Publisher("/dev/fsw0010/ip/f_cmd", Float64, queue_size=1)
+        self.query_power = rospy.Publisher("/dev/fsw0010/ip/p_cmd", Float64, queue_size=1)
+        self.query_onoff = rospy.Publisher("/dev/fsw0010/ip/onoff_cmd", String, queue_size=1)
+        rospy.Subscriber("/dev/fsw0010/ip/freq", Float64, self.set_freq)
+        rospy.Subscriber("/dev/fsw0010/ip/power", Float64, self.set_power)
+        rospy.Subscriber("/dev/fsw0010/ip/onoff", String, self.set_onoff)
 
     def set_freq(self,q):
         self.sg.freq_set(q.data)
@@ -38,7 +38,7 @@ class e8257(self):
         return
 
     def query_power(self):
-        freq = self.sg.freq_query()
+        freq = sg.self.freq_query()
         self.query_freq.publish(freq)
         return
 
@@ -53,5 +53,5 @@ class e8257(self):
 
 if __name__ == '__main__':
     rospy.init_node(name)
-    sg = e8257()
+    sg = fsw0010()
     rospy.spin()
