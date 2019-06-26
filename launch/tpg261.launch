@@ -1,0 +1,11 @@
+<launch>
+
+  <node pkg = "rospkg-ogamesure"
+        name = "tpg261"
+        type = "tpg261.py">
+    <remap from = '/tpg_pressure' to = ''/>
+    <remap from = '/tpg_state' to = ''/>
+
+  </node>
+
+</launch>
