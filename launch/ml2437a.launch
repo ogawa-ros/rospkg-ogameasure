@@ -7,6 +7,8 @@
         <param name="~gpibport" value="" />
         <param name="~node" value="" />
         <param name="~ch" value="" />
+        <param name="~ave_num" value="" />
+        <param name="~ave_onoff" value="" />
 
     <remap from = '/dev/ml2437a/__IP__/ch1' to = ''/>
     <remap from = '/dev/ml2437a/__IP__/ch2' to = ''/>
