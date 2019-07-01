@@ -39,5 +39,5 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         for ch in ch_num:
             power = pm.power(ch)
-            publist[ch].publish(power)
+            self.publist[ch].publish(power)
         continue
