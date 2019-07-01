@@ -1,0 +1,17 @@
+<launch>
+
+  <node pkg = "rospkg-ogamesure"
+        name = "ml2437a"
+        type = "ml2437a.py">
+        <param name="~host" value="" />
+        <param name="~gpibport" value="" />
+        <param name="~node" value="" />
+        <param name="~ch" value="" />
+
+    <remap from = '/dev/ml2437a/__IP__/ch1' to = ''/>
+    <remap from = '/dev/ml2437a/__IP__/ch2' to = ''/>
+
+
+  </node>
+
+</launch>
