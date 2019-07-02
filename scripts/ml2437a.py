@@ -10,7 +10,7 @@ from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Int32
 
-class ml2437a(self):
+class ml2437a(object):
     def __init__(self):
         host = rospy.get_param("~host")
         gpibport = rospy.get_param("~gpibport")
