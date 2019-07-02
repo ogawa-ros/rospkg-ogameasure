@@ -39,6 +39,7 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown():
         for ch in range(ch_num):
+            time.sleep(0.3)
             power = pm.power(ch)
             self.publist[ch].publish(power)
         continue
