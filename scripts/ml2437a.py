@@ -38,7 +38,7 @@ if __name__ == '__main__':
     pm = ml2437a()
 
     while not rospy.is_shutdown():
-        for ch in ch_num:
+        for ch in range(ch_num):
             power = pm.power(ch)
             self.publist[ch].publish(power)
         continue
