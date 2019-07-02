@@ -4,6 +4,7 @@ node = "ml2437a"
 
 import time
 import sys
+sys.path.append("/home/exito/ros/src/ogameasure")
 import ogameasure
 import rospy
 from std_msgs.msg import Float64
