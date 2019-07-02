@@ -31,7 +31,7 @@ class ml2437a(object):
 
 
 if __name__ == '__main__':
-    node = rospy.get_param("~node")
+    node = rospy.get_param("~node_name")
     ch_num = rospy.get_param("~ch")
     rospy.init_node(node)
     pm = ml2437a()

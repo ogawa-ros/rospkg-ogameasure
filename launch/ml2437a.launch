@@ -5,7 +5,7 @@
         type = "ml2437a.py">
         <param name="~host" value="192.168.100.44" />
         <param name="~gpibport" value="13" />
-        <param name="~node" value="ml2438a" />
+        <param name="~node_name" value="ml2438a" />
         <param name="~ch" value="1" />
         <param name="~ave_num" value="60" />
         <param name="~ave_onoff" value="0" />
