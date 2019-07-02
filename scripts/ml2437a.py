@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-name = "ml2437a"
+node = "ml2437a"
 
 import time
 import sys
@@ -31,9 +31,9 @@ class ml2437a(object):
 
 
 if __name__ == '__main__':
+    rospy.init_node(node)
     node = rospy.get_param("~node_name")
     ch_num = rospy.get_param("~ch")
-    rospy.init_node(node)
     pm = ml2437a()
 
     while not rospy.is_shutdown():
