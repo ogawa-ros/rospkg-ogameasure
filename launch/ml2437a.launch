@@ -3,15 +3,15 @@
   <node pkg = "rospkg-ogamesure"
         name = "ml2437a"
         type = "ml2437a.py">
-        <param name="~host" value="" />
-        <param name="~gpibport" value="" />
-        <param name="~node" value="" />
-        <param name="~ch" value="" />
-        <param name="~ave_num" value="" />
-        <param name="~ave_onoff" value="" />
+        <param name="~host" value="192.168.100.44" />
+        <param name="~gpibport" value="13" />
+        <param name="~node" value="ml2438a" />
+        <param name="~ch" value="1" />
+        <param name="~ave_num" value="60" />
+        <param name="~ave_onoff" value="0" />
 
-    <remap from = '/dev/ml2437a/__IP__/ch1' to = ''/>
-    <remap from = '/dev/ml2437a/__IP__/ch2' to = ''/>
+    <remap from = '/dev/ml2437a/__IP__/ch1' to = '/dev/ml2437a/192.168.100.44/ch1'/>
+    <remap from = '/dev/ml2437a/__IP__/ch2' to = '/dev/ml2437a/192.168.100.44/ch2'/>
 
 
   </node>
