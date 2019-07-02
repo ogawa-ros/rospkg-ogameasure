@@ -10,8 +10,8 @@
         <param name="~ave_num" value="60" />
         <param name="~ave_onoff" value="0" />
 
-    <remap from = '/dev/ml2437a/__IP__/ch1' to = '/dev/ml2437a/192.168.100.44/ch1'/>
-    <remap from = '/dev/ml2437a/__IP__/ch2' to = '/dev/ml2437a/192.168.100.44/ch2'/>
+    <remap from = '/dev/ml2437a/__IP__/ch1' to = '/dev/ml2437a/192_168_100_44/ch1'/>
+    <remap from = '/dev/ml2437a/__IP__/ch2' to = '/dev/ml2437a/192_168_100_44/ch2'/>
 
 
   </node>
