@@ -41,5 +41,5 @@ if __name__ == '__main__':
         for ch in range(1,ch_num+1):
             time.sleep(0.3)
             power = pm.power(ch)
-            self.publist[ch].publish(power)
+            publist[ch].publish(power)
         continue
