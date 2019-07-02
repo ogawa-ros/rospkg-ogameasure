@@ -24,7 +24,6 @@ class ml2437a(object):
         self.pm.set_average_onoff(ave_onoff)
         self.pm.set_average_count(ave_num)
 
-        self.publist = [rospy.Publisher("/dev/ml2437a/__IP__/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
     def power(self,ch):
         power = self.pm.measure(ch)
@@ -35,6 +34,7 @@ if __name__ == '__main__':
     rospy.init_node(node)
     node = rospy.get_param("~node_name")
     ch_num = rospy.get_param("~ch")
+    publist = [rospy.Publisher("/dev/ml2437a/__IP__/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
     pm = ml2437a()
 
     while not rospy.is_shutdown():
