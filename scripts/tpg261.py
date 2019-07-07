@@ -23,17 +23,17 @@ class tpg261(object):
 
     def query_pressure(self):
         p = self.tpg.pressure()        
-        self.pub_p(p)
+        self.pub_p.publish(p)
         return
 
     def tpg_state(self):
         s = self.tpg.tpg_status()
-        self.pub_s(s)
+        self.pub_s.publish(s)
         return
 
     def turn_state(self):
         c = self.tpg.turn_status_g1()
-        self.pub_t(c)
+        self.pub_t.publish(c)
         return
 
     def tpg_on(self):
