@@ -1,34 +1,60 @@
-import rospy, os, sys, time, serial, threading, std_msgs.msg
-from ogamesure import tpg261_device
+#! /usr/bin/env python3
 
+name = "tpg261"
 
-class tpg261_driver(object):
+import time
+import sys
+import ogameasure
+import rospy
+from std_msgs.msg import Float64
+from std_msgs.msg import String
+from std_msgs.msg import Int32
+
+class tpg261(object):
     def __init__(self):
 
-        self.pub_p = rospy.Publisher("/tpg_pressure", Float64, queue_size=1)
-        self.pub_s = rospy.Publisher("/tpg_state", String, queue_size=1)
-        self.pub_u = rospy.Publisher("/tpg_unit", String, queue_size=1)
+        com = ogameasure.usb('FTHB88LO')
+        self.tpg = ogameasure.Pfeiffer.tpg261(com)
 
+        self.pub_p = rospy.Publisher("/tpg/pressure", Float64, queue_size=1)
+        self.pub_s = rospy.Publisher("/tpg/state", String, queue_size=1)
+        self.pub_t = rospy.Publisher("/tpg/turn", String, queue_size=1)
+        self.pub_u = rospy.Publisher("/tpg/unit", String, queue_size=1)
 
     def query_pressure(self):
-        p = pressure()        
+        p = self.tpg.pressure()        
         self.pub_p(p)
+        return
 
-    def query_state(self):
-        s = pressure_error()
+    def tpg_state(self):
+        s = self.tpg.tpg_status()
         self.pub_s(s)
+        return
 
-    def check_state(self):
-        c = check()
-        self.pub_s(c)
+    def turn_state(self):
+        c = self.tpg.turn_status_g1()
+        self.pub_t(c)
+        return
+
+    def tpg_on(self):
+        self.tpg.gauge_on_g1()
+        return
+
+    def tpg_off(self):
+        self.tpg.gauge_off_g1()
+        return
 
     def change_unit_torr(self):
-        t = pres_unit_torr()
-        self.pub_u(t)
+        selfpres_unit_bar()
+        return
+
+    def change_unit_torr(self):
+        self.pres_unit_torr()
+        return
 
     def check_unit_pa(self):
-        a = pres_unit_pa()
-        self.pub_u(a)
+        self.pres_unit_pa()
+        return
 
 if __name__ == "__main__" :
     rospy.init_node("tpg261")

@@ -3,8 +3,10 @@
   <node pkg = "rospkg-ogamesure"
         name = "tpg261"
         type = "tpg261.py">
-    <remap from = '/tpg_pressure' to = ''/>
-    <remap from = '/tpg_state' to = ''/>
+    <remap from = '/tpg/pressure' to = ''/>
+    <remap from = '/tpg/state' to = ''/>
+    <remap from = '/tpg/turn' to = ''/>
+    <remap from = '/tpg/unit' to = ''/>
 
   </node>
 
