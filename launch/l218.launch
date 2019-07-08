@@ -7,10 +7,10 @@
         <param name="~gpibport" value="13" />
         <param name="~ch" value="4" />
 
-    <remap from = '/dev/218/__IP__/ch1' to = '/dev/218/ip_192_168_100_12/ch1'/>
-    <remap from = '/dev/218/__IP__/ch2' to = '/dev/218/ip_192_168_100_12/ch2'/>
-    <remap from = '/dev/218/__IP__/ch3' to = '/dev/218/ip_192_168_100_12/ch3'/>
-    <remap from = '/dev/218/__IP__/ch4' to = '/dev/218/ip_192_168_100_12/ch4'/>
+    <remap from = '/dev/218/__IP__/temp/ch1' to = '/dev/218/ip_192_168_100_12/temp/ch1'/>
+    <remap from = '/dev/218/__IP__/temp/ch2' to = '/dev/218/ip_192_168_100_12/temp/ch2'/>
+    <remap from = '/dev/218/__IP__/temp/ch3' to = '/dev/218/ip_192_168_100_12/temp/ch3'/>
+    <remap from = '/dev/218/__IP__/temp/ch4' to = '/dev/218/ip_192_168_100_12/temp/ch4'/>
 
 
   </node>
