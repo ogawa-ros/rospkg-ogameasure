@@ -31,7 +31,7 @@ if __name__ == '__main__':
     l218 = l218()
 
     while not rospy.is_shutdown():
-        for i in reange(ch_num):
+        for i in range(ch_num):
             temp = list(l218.temp(ch))
             publist[ch].publish(temp[i])
         continue
