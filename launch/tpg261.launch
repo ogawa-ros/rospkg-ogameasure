@@ -1,13 +1,14 @@
 <launch>
 
-  <node pkg = "rospkg-ogamesure"
+  <node pkg = "rospkg-ogamaesure"
         name = "tpg261"
         type = "tpg261.py">
+<!--
     <remap from = '/tpg/pressure' to = ''/>
     <remap from = '/tpg/state' to = ''/>
     <remap from = '/tpg/turn' to = ''/>
     <remap from = '/tpg/unit' to = ''/>
-
+-->
   </node>
 
 </launch>
