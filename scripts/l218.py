@@ -29,7 +29,6 @@ if __name__ == '__main__':
     ch_num = rospy.get_param("~ch")
 
     l218 = l218()
-    rospy.spin()
 
     while not rospy.is_shutdown():
         for i in reange(ch_num):
