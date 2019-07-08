@@ -25,8 +25,9 @@ class l218(object):
 
 
 if __name__ == '__main__':
-    ch_num = rospy.get_param("~ch")
     rospy.init_node(name)
+    ch_num = rospy.get_param("~ch")
+
     l218 = l218()
     rospy.spin()
 
