@@ -17,7 +17,7 @@ class l218(self):
         com = ogameasure.gpib_prologix(host, gpibport)
         self.l218 = ogameasure.Lakeshore.model218(com)
 
-        publist = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch+1 in ch_num+1]
+        publist = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch+1 in range(ch_num+1)]
 
     def temp(self,ch=0):
         temp = self.l218.kelvin_reading_query(ch)
