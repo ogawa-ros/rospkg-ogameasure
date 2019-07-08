@@ -19,7 +19,7 @@ class l218(self):
 
         publist = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in ch_num]
 
-    def temp(self,ch):
+    def temp(self,ch=0):
         temp = self.l218.kelvin_reading_query(ch)
         return temp
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     rospy.spin()
 
     while not rospy.is_shutdown():
-        for i in ch_num:
-            temp = l218.temp(ch)
-            publist[ch].publish(temp)
+        for i in reange(ch_num):
+            temp = list(l218.temp(ch))
+            publist[ch].publish(temp[i])
         continue
