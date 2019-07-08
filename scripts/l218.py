@@ -21,19 +21,23 @@ class l218(object):
 
         self.publist = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
-    def temp(self,ch=0):
-        temp = self.l218.kelvin_reading_query(ch)
-        return temp
+    def temp_publisher(self,ch=0):
+        while not rospy.is_shutdown():
+            for i in range(ch_num):
+                temp = list(self.l218.kelvin_reading_query(ch=0))
+                self.pub_list[i].publish(temp[i])
+            continue
 
+    def start_thread(self):
+        th = threading.Thread(target=self.temp_publisher)
+        th.setDaemon(True)
+        th.start()
 
 if __name__ == '__main__':
     rospy.init_node(name)
     ch_num = rospy.get_param("~ch")
 
-    l218 = l218()
 
-    while not rospy.is_shutdown():
-        for i in range(ch_num):
-            temp = list(l218.temp())
-            publist[ch].publish(temp[i])
-        continue
+    temp = l218()
+    temp.start_thread()
+    rospy.spin()
