@@ -45,7 +45,7 @@ class tpg261(object):
         self.pres_unit_pa()
 
 if __name__ == "__main__" :
-    rospy.init_node("tpg261")
+    rospy.init_node(name)
     tpg = tpg261()
     thread_tpg = threading.Thread(target=tpg.query_pressure)
     thread_tpg.start()
