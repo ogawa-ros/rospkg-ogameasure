@@ -16,7 +16,7 @@ class tpg261(object):
         com = ogameasure.usb('FTHB88LO')
         self.tpg = ogameasure.Pfeiffer.tpg261(com)
 
-        self.pub_p = rospy.Publisher("/tpg/pressure", Float64, queue_size=1)
+        self.pub_p = rospy.Publisher("/tpg/pressure", String, queue_size=1)
         self.pub_s = rospy.Publisher("/tpg/state", String, queue_size=1)
         self.pub_t = rospy.Publisher("/tpg/turn", String, queue_size=1)
         self.pub_u = rospy.Publisher("/tpg/unit", String, queue_size=1)
