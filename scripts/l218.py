@@ -27,6 +27,7 @@ class l218(object):
             for i in range(ch_num):
                 temp = list(self.l218.kelvin_reading_query(ch=0))
                 self.pub_list[i].publish(temp[i])
+                time.sleep(1)
             continue
 
     def start_thread(self):
