@@ -22,7 +22,8 @@ class l218(object):
         print(gpibport)
         self.l218 = ogameasure.Lakeshore.model218(com)
 
-        self.pub_list = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
+        #self.pub_list = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
+        self.pub_list = [rospy.Publisher("/dev/218/ip_192_168_100_12/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
     def temp_publisher(self,ch=0):
         while not rospy.is_shutdown():
@@ -39,8 +40,8 @@ class l218(object):
 
 if __name__ == '__main__':
     rospy.init_node(name)
-    ch_num = rospy.get_param("~ch")
-
+    #ch_num = rospy.get_param("~ch")
+    ch_num = rospy.get_param("4")
 
     temp = l218()
     temp.start_thread()
