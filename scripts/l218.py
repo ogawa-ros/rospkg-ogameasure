@@ -40,6 +40,5 @@ if __name__ == '__main__':
     ch_num = rospy.get_param("~ch")
 
     temp = l218()
-    temp.temp_publisher()
     temp.start_thread()
     rospy.spin()
