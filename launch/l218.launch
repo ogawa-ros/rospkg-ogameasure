@@ -5,7 +5,7 @@
         type = "l218.py">
         <param name="~host" value="192.168.100.12" />
         <param name="~gpibport" value="13" />
-        <param name="~ch" value="4" />
+        <param name="~ch" value=4 />
 
     <remap from = '/dev/218/__IP__/temp/ch1' to = '/dev/218/ip_192_168_100_12/temp/ch1'/>
     <remap from = '/dev/218/__IP__/temp/ch2' to = '/dev/218/ip_192_168_100_12/temp/ch2'/>

@@ -27,6 +27,7 @@ class l218(object):
             for i in range(ch_num):
                 temp = list(self.l218.kelvin_reading_query(ch=0))
                 self.pub_list[i].publish(temp[i])
+                time.sleep(1)
             continue
 
     def start_thread(self):
@@ -37,7 +38,6 @@ class l218(object):
 if __name__ == '__main__':
     rospy.init_node(name)
     ch_num = rospy.get_param("~ch")
-
 
     temp = l218()
     temp.start_thread()
