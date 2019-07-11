@@ -13,8 +13,10 @@ from std_msgs.msg import Int32
 
 class l218(object):
     def __init__(self):
-        host = rospy.get_param("~host")
-        gpibport = rospy.get_param("~gpibport")
+        #host = rospy.get_param("~host")
+        #gpibport = rospy.get_param("~gpibport")
+        host = rospy.get_param("192.168.100.12")
+        gpibport = rospy.get_param("13")
         com = ogameasure.gpib_prologix(host, gpibport)
         print(host)
         print(gpibport)
