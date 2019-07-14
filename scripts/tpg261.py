@@ -3,22 +3,23 @@
 name = "tpg261"
 
 import time, sys, rospy, threading, ogameasure
+from std_msgs.msg import Float64
 from std_msgs.msg import String
 
 class tpg261(object):
     def __init__(self):
 
-        com = ogameasure.usb('FTHB88LO')
+        serial = rospy.get_param("~serial")
+        com = ogameasure.usb(serial)
         self.tpg = ogameasure.Pfeiffer.tpg261(com)
 
-        self.pub_p = rospy.Publisher("/tpg/pressure", String, queue_size=1)
-        self.pub_s = rospy.Publisher("/tpg/state", String, queue_size=1)
-        self.pub_t = rospy.Publisher("/tpg/turn", String, queue_size=1)
-        self.pub_u = rospy.Publisher("/tpg/unit", String, queue_size=1)
+        self.pub_p = rospy.Publisher("/dev/tpg/FTHB88LO/pressure", Float64, queue_size=1)
+        self.pub_s = rospy.Publisher("/dev/tpg/FTHB88LO/state", String, queue_size=1)
+        self.pub_t = rospy.Publisher("/dev/tpg/FTHB88LO/turn", String, queue_size=1)
 
     def query_pressure(self):
         while not rospy.is_shutdown():
-            p = self.tpg.pressure()        
+            p = self.tpg.pressure()
             self.pub_p.publish(p)
 
     def tpg_state(self):
