@@ -3,12 +3,10 @@
   <node pkg = "rospkg-ogamaesure"
         name = "tpg261"
         type = "tpg261.py">
-<!--
-    <remap from = '/tpg/pressure' to = ''/>
-    <remap from = '/tpg/state' to = ''/>
-    <remap from = '/tpg/turn' to = ''/>
-    <remap from = '/tpg/unit' to = ''/>
--->
+        <param name="~serial" value="FTHB88LO" />
+
+    <remap from = '/dev/tpg/__usb__/press' to = '/dev/tpg/FTHB88LO/pressure'/>
+
   </node>
 
 </launch>
