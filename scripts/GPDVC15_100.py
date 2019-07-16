@@ -39,7 +39,7 @@ class GPDVC15_100(object):
         print(q)
         return
 
-if __name__ == '__main__':
+if __name__ == "__main__" :
     print("1")
     rospy.init_node(name)
     print("2")
