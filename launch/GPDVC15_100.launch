@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg = "rospkg-ogamesure"
+  <node pkg = "rospkg-ogameasure"
         name = "gpdvc15"
         type = "GPDVC15.py">
         <param name="~host" value="192.168.100.44" />
