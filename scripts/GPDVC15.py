@@ -12,6 +12,7 @@ from std_msgs.msg import Int32
 
 class GPDVC15_100(object):
     def __init__(self):
+        print("nandeya")
         host = rospy.get_param("~host")
         gpibport_list = eval(rospy.get_param("~gpibport_list"))
         com_list = []
