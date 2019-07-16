@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-name = "gpdvc15"
+name = "GPDVC15"
 
 import time
 import sys
