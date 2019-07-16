@@ -23,13 +23,16 @@ class GPDVC15_100(object):
             for com in com_list:
                 loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
                 self.loatt.append(loatt)
+        print(self.loatt)
 
         for i ,port in enumerate(gpibport_list):
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
             rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
 
+
     def set_output(self,q,args):
         self.loatt[args].output_set(q.data)
+        print(q)
         return
 
 if __name__ == '__main__':
