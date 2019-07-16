@@ -24,7 +24,7 @@ class GPDVC15_100(object):
             self.loatt.append(loatt)
 
         for i ,port in enumerate(gpibport_list):
-            topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(i)
+            topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
             rospy.Subscriber(topic, String, self.set_output, callback_args=i)
 
     def set_output(self,q,args):
