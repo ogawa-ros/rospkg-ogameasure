@@ -23,11 +23,9 @@ class GPDVC15_100(object):
             gpibport = i
             com = ogameasure.gpib_prologix(host, gpibport)
             com_list.append(com)
-            time.sleep(1)
             for com in com_list:
                 loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
                 self.loatt.append(loatt)
-                time.sleep(1)
         print(self.loatt)
 
         for i ,port in enumerate(gpibport_list):
@@ -42,7 +40,9 @@ class GPDVC15_100(object):
         return
 
 if __name__ == '__main__':
+    print("1")
     rospy.init_node(name)
+    print("2")
     loatt = GPDVC15_100()
-    time.sleep(5)
+    print("3")
     rospy.spin()
