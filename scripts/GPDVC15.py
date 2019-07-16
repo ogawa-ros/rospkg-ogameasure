@@ -10,20 +10,29 @@ from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Int32
 
-class GPDVC15(self):
+class GPDVC15_100(object):
     def __init__(self):
         host = rospy.get_param("~host")
-        gpibport = rospy.get_param("~gpibport")
-        com = ogameasure.gpib_prologix(host, gpibport)
-        self.loatt = ogameasure.ELVA1.GPDVC15(com)
-        rospy.Subscriber("/dev/GPDVC15/__IP__/onoff", String, self.set_output)
+        gpibport_list = eval(rospy.get_param("~gpibport_list"))
+        com_list = []
+        self.loatt = []
+        for i in gpibport_list:
+            gpibport = i
+            com = ogameasure.gpib_prologix(host, gpibport)
+            com_list.appennd(com)
+            loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
+            self.loatt.appennd(loatt)
 
-    def set_output(self):
-        self.loatt.output_set(q.data)
+        for i in len(p_list):
+            topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(i)
+            rospy.Subscriber(topic, String, self.set_output, callback_args=i)
+
+    def set_output(self,q,args):
+        self.loatt[args].output_set(q.data)
         return
 
 if __name__ == '__main__':
-    node = rospy.get_param("~node")
     rospy.init_node(name)
-    loatt = GPDVC15()
+    node = rospy.get_param("~node")
+    loatt = GPDVC15_100()
     rospy.spin()
