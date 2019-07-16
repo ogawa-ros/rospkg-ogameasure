@@ -42,4 +42,5 @@ if __name__ == '__main__':
     rospy.init_node(name)
     node = rospy.get_param("~node")
     loatt = GPDVC15_100()
+
     rospy.spin()
