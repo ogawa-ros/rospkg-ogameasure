@@ -3,14 +3,14 @@
   <node pkg = "rospkg-ogamesure"
         name = "e8247c"
         type = "e8247c.py">
-        <param name="~host" value="" />
-        <param name="~port" value="" />
-    <remap from = '/dev/e8247c/__IP__/freq_cmd' to = ''/>
-    <remap from = '/dev/e8247c/__IP__/power_cmd' to = ''/>
-    <remap from = '/dev/e8247c/__IP__/onoff_cmd' to = ''/>
-    <remap from = '/dev/e8247c/__IP__/freq' to = ''/>
-    <remap from = '/dev/e8247c/__IP__/power' to = ''/>
-    <remap from = '/dev/e8247c/__IP__/onoff' to = ''/>
+        <param name="~host" value="192.168.100.181" />
+        <param name="~port" value="5025" />
+    <remap from = '/dev/e8247c/__IP__/freq_cmd' to = '/dev/e8247c/ip_192_168_100_181/freq_cmd'/>
+    <remap from = '/dev/e8247c/__IP__/power_cmd' to = '/dev/e8247c/ip_192_168_100_181/power_cmd'/>
+    <remap from = '/dev/e8247c/__IP__/onoff_cmd' to = '/dev/e8247c/ip_192_168_100_181/onoff_cmd'/>
+    <remap from = '/dev/e8247c/__IP__/freq' to = '/dev/e8247c/ip_192_168_100_181/freq'/>
+    <remap from = '/dev/e8247c/__IP__/power' to = '/dev/e8247c/ip_192_168_100_181/power'/>
+    <remap from = '/dev/e8247c/__IP__/onoff' to = '/dev/e8247c/ip_192_168_100_181/onoff'/>
 
   </node>
 
