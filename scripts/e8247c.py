@@ -22,11 +22,11 @@ class e8247(object):
         rospy.Subscriber("/dev/e8247c/__IP__/power", Float64, self.set_power)
         rospy.Subscriber("/dev/e8247c/__IP__/onoff", Float64, self.set_onoff)
 
-    def set_freq(self,q):
+    def set_freq(self, q):
         self.sg.freq_set(q.data)
         return
 
-    def set_power(self,q):
+    def set_power(self, q):
         self.sg.power_set(q.data)
         return
 
@@ -40,7 +40,7 @@ class e8247(object):
         self.query_freq.publish(freq)
         return
 
-    def set_onoff(self):
+    def set_onoff(self, q):
         self.sg.output_set(q.data)
         return
 
