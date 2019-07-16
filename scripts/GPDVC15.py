@@ -16,6 +16,7 @@ class GPDVC15_100(object):
         gpibport_list = eval(rospy.get_param("~gpibport_list"))
         com_list = []
         self.loatt = []
+        print(gpibport_list)
         for i in gpibport_list:
             gpibport = i
             com = ogameasure.gpib_prologix(host, gpibport)
