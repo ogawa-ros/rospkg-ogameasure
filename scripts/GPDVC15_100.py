@@ -43,5 +43,5 @@ class GPDVC15_100(object):
 if __name__ == '__main__':
     rospy.init_node(name)
     loatt = GPDVC15_100()
-    time.sleep(1)
+    time.sleep(5)
     rospy.spin()
