@@ -2,7 +2,8 @@
 
   <node pkg = "rospkg-ogameasure"
         name = "GPDVC15_100"
-        type = "GPDVC15_100.py">
+        type = "GPDVC15_100.py"
+        output="screen">
         <param name="~host" value="192.168.100.44" />
         <param name="~gpibport_list" value="[4,5]" />
 
