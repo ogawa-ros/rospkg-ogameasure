@@ -36,6 +36,7 @@ class GPDVC15_100(object):
     def set_output(self,q,args):
         lo = self.loatt[args]
         lo.output_set(q.data)
+        print(lo)
         print(q)
         return
 
