@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-name = "GPDVC15"
+name = "gpdvc15"
 
 import time
 import sys
@@ -32,7 +32,7 @@ class GPDVC15_100(object):
         return
 
 if __name__ == '__main__':
-    node = rospy.get_param("~node")
     rospy.init_node(node)
+    node = rospy.get_param("~node")
     loatt = GPDVC15_100()
     rospy.spin()
