@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg = "rospkg-ogamesure"
+  <node pkg = "rospkg-ogameasure"
         name = "e8247c"
         type = "e8247c.py">
         <param name="~host" value="192.168.100.181" />
