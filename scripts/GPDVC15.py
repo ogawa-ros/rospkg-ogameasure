@@ -19,7 +19,7 @@ class GPDVC15_100(object):
         for i in gpibport_list:
             gpibport = i
             com = ogameasure.gpib_prologix(host, gpibport)
-            com_list.appennd(com)
+            com_list.append(com)
             loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
             self.loatt.appennd(loatt)
 
