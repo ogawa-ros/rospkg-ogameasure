@@ -16,22 +16,18 @@ class GPDVC15_100(object):
         print("nandeya")
         host = rospy.get_param("~host")
         gpibport_list = eval(rospy.get_param("~gpibport_list"))
-        com_list = []
         self.loatt = []
         print(gpibport_list)
         for i in gpibport_list:
             gpibport = i
             com = ogameasure.gpib_prologix(host, gpibport)
-            com_list.append(com)
-            for com in com_list:
-                loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
-                self.loatt.append(loatt)
+            loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
+            self.loatt.append(loatt)
         print(self.loatt)
 
         for i ,port in enumerate(gpibport_list):
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
             rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
-
 
     def set_output(self,q,args):
         lo = self.loatt[args]
