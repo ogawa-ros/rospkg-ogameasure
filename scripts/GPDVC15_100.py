@@ -47,9 +47,6 @@ class GPDVC15_100(object):
         return
 
 if __name__ == "__main__" :
-    print("1")
     rospy.init_node(name)
-    print("2")
     loatt = GPDVC15_100()
-    print("3")
     rospy.spin()
