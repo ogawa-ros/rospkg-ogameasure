@@ -38,7 +38,9 @@ class GPDVC15_100(object):
     def set_output(self,q,args):
         lo = self.loatt[args]
         time.sleep(1)
-        lo.output_set(q.data)
+        msg = Float64()
+        msg = q.data
+        lo.output_set(msg)
         print(args)
         print(lo)
         print(q)
