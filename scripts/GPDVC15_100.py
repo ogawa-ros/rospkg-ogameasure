@@ -30,7 +30,10 @@ class GPDVC15_100(object):
         for i ,port in enumerate(gpibport_list):
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
             print(topic)
+            print("args")
+            print(i)
             rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
+            time.sleep(3)
 
     def set_output(self,q,args):
         lo = self.loatt[args]
