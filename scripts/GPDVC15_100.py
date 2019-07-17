@@ -26,11 +26,11 @@ class GPDVC15_100(object):
             print(self.loatt)
 
         topic1 = "/dev/gpdvc15_100rs/ip_192_168_100_44/port_4/i_cmd"
-        rospy.Subscriber(topic1, Float64, self.set_output)
+        rospy.Subscriber(topic1, Float64, self.set_output,callback_args=0)
         time.sleep(1)
         print(topic1)
         topic2 = "/dev/gpdvc15_100rs/ip_192_168_100_44/port_5/i_cmd"
-        rospy.Subscriber(topic2, Float64, self.set_output2)
+        rospy.Subscriber(topic2, Float64, self.set_output2,callback_args=1)
         time.sleep(1)
         print(topic2)
 
@@ -45,16 +45,16 @@ class GPDVC15_100(object):
             time.sleep(1)
         """
 
-    def set_output(self,q):
-        #lo = self.loatt[args]
+    def set_output(self,q,args):
+        lo = self.loatt[args]
         time.sleep(1)
         print(q.data)
         lo.output_set(q.data)
 
         return
 
-    def set_output2(self,q):
-        #lo = self.loatt[args]
+    def set_output2(self,q,args):
+        lo = self.loatt[args]
         time.sleep(1)
         print(q.data)
         lo.output_set(q.data)
