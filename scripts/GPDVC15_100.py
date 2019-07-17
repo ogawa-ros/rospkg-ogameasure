@@ -21,8 +21,8 @@ class GPDVC15_100(object):
             gpibport = i
             print(gpibport)
             com = ogameasure.gpib_prologix(host, gpibport)
-            loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
-            self.loatt.append(loatt)
+            lo = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
+            self.loatt.append(lo)
             time.sleep(1)
             print(self.loatt)
         """
@@ -42,7 +42,7 @@ class GPDVC15_100(object):
             print("args")
             print(i)
             print(port)
-            rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
+            rospy.Subscriber(topic, Float64, self.set_output, callback_args=1)
             time.sleep(1)
 
     def set_output(self,q,args):
@@ -62,5 +62,5 @@ if __name__ == "__main__" :
     rospy.init_node(name)
     host = rospy.get_param("~host")
     gpibport_list = eval(rospy.get_param("~gpibport_list"))
-    loatt = GPDVC15_100()
+    att = GPDVC15_100()
     rospy.spin()
