@@ -22,7 +22,6 @@ class n9343c(object):
         while not rospy.is_shutdown():
             spec = Float64MultiArray(data=self.sa.trace_data_query())
             self.pub.publish(spec)
-            time.sleep(1)
             continue
         return
 
