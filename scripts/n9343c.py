@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 
 name = 'n9349c'
 
