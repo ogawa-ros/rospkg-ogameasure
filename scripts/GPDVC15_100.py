@@ -36,13 +36,16 @@ class GPDVC15_100(object):
         print(topic2)
 
         """
+        s = []
         for i ,port in enumerate(gpibport_list):
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
             print(topic)
             print("args")
             print(i)
             print(port)
-            rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
+            sub = rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
+            s.append(sub)
+            print(s)
             time.sleep(1)
 
 
