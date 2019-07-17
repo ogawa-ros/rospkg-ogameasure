@@ -14,8 +14,10 @@ class GPDVC15_100(object):
 
     def __init__(self):
         print("nandeya")
-        host = rospy.get_param("~host")
-        gpibport_list = eval(rospy.get_param("~gpibport_list"))
+        host = "192.168.100.44"
+        #host = rospy.get_param("~host")
+        gpibport_list = eval("[4,5]")
+        #gpibport_list = eval(rospy.get_param("~gpibport_list"))
         self.loatt = []
         print(gpibport_list)
         for i in gpibport_list:
@@ -25,21 +27,35 @@ class GPDVC15_100(object):
             loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
             self.loatt.append(loatt)
             time.sleep(1)
-        print(self.loatt)
+            print(self.loatt)
 
-        for i ,port in enumerate(gpibport_list):
-            topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
-            print(topic)
-            print("args")
-            print(i)
-            rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
-            time.sleep(1)
+        topic1 = "/dev/gpdvc15_100rs/ip_192_168_100_44/port_4/i_cmd"
+        rospy.Subscriber(topic1, Float64, self.set_output, callback_args=0)
+        time.sleep(1)
+        print(topic1)
+        topic2 = "/dev/gpdvc15_100rs/ip_192_168_100_44/port_5/i_cmd"
+        rospy.Subscriber(topic2, Float64, self.set_output, callback_args=1)
+        time.sleep(1)
+        print(topic2)
+
+
+        #for i ,port in enumerate(gpibport_list):
+            #topic = "/dev/gpdvc15_100rs/ip_192_168_100_44/port_%d/i_cmd"%(port)
+            #topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
+            #print(topic)
+            #print("args")
+            #print(i)
+            #print(port)
+            #rospy.Subscriber(topic, Float64, self.set_output, callback_args=1)
+            #time.sleep(1)
 
     def set_output(self,q,args):
         lo = self.loatt[args]
         time.sleep(1)
         msg = Float64()
         msg = q.data
+        print(lo)
+        print(q.data)
         lo.output_set(msg)
         print(args)
         print(lo)
