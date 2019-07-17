@@ -24,6 +24,7 @@ class GPDVC15_100(object):
             com = ogameasure.gpib_prologix(host, gpibport)
             loatt = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
             self.loatt.append(loatt)
+            time.sleep(1)
         print(self.loatt)
 
         for i ,port in enumerate(gpibport_list):
@@ -33,6 +34,7 @@ class GPDVC15_100(object):
 
     def set_output(self,q,args):
         lo = self.loatt[args]
+        time.sleep(1)
         lo.output_set(q.data)
         print(args)
         print(lo)
