@@ -21,7 +21,7 @@ class n9343c(object):
         self.pub = rospy.Publisher("/dev/n9343c/__IP__/spec", Float64MultiArry, queue_size=1)
 
     def spec_publisher(self):
-        while no rospy.is_shutdown():
+        while not rospy.is_shutdown():
             spec = self.sa.trace_data_query()
             self.pub.publish(spec)
             continue
