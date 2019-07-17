@@ -60,7 +60,6 @@ class GPDVC15_100(object):
 
         return
 
-        """
     def set_output2(self,q,args):
         lo = self.loatt[args]
         time.sleep(1)
@@ -70,7 +69,6 @@ class GPDVC15_100(object):
         lo.output_set(q.data)
 
         return
-        """
 
 if __name__ == "__main__" :
     rospy.init_node(name)
