@@ -42,7 +42,7 @@ class GPDVC15_100(object):
             print("args")
             print(i)
             print(port)
-            rospy.Subscriber(topic, Float64, self.set_output, callback_args=1)
+            rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
             time.sleep(1)
 
     def set_output(self,q,args):
