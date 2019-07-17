@@ -21,7 +21,7 @@ class n9343c(object):
     def spec_publisher(self):
         while not rospy.is_shutdown():
             spec = self.sa.trace_data_query()
-            self.pub.publish(spec)
+            self.pub.publish(spec.tolist())
             continue
         return
 
