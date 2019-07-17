@@ -14,7 +14,7 @@ from std_msgs.msg import Int32
 class n9343c(object):
 
     def __init__(self):
-        host = rospy.get_paran("~host")
+        host = rospy.get_param("~host")
         port = rospy.get_param("~port")
         com = ogameasure.ethernet(host, port)
         self.sa = ogameasure.Keysite.N9343C(com)
