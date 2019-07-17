@@ -5,7 +5,7 @@
         type = "n9343c.py">
         <param name="~host" value="192.168.100.185" />
         <param name="~port" value="5025" />
-    <remap from = '/dev/e8247c/__IP__/spec' to = '/dev/n9343c/ip_192_168_100_185/spec'/>
+    <remap from = '/dev/n9343c/__IP__/spec' to = '/dev/n9343c/ip_192_168_100_185/spec'/>
 
   </node>
 
