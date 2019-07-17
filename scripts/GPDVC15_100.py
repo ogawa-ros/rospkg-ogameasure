@@ -14,7 +14,6 @@ class GPDVC15_100(object):
 
     def __init__(self):
         print("nandeya")
-
         self.loatt = []
         print(gpibport_list)
         for i in gpibport_list:
@@ -48,8 +47,6 @@ class GPDVC15_100(object):
     def set_output(self,q,args):
         lo = self.loatt[args]
         time.sleep(1)
-        msg = Float64()
-        msg = q.data
         print(lo)
         print(q.data)
         lo.output_set(msg)
