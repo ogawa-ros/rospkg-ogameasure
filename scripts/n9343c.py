@@ -1,0 +1,39 @@
+
+name = 'n9349c'
+
+import time
+import sys
+import ogameasure
+import rospy
+import threading
+from std_msgs.msg import Float64
+from std_msgs.msg import String
+from std_msgs.msg import Int32
+
+class n9343c(object):
+
+    def __init__(self):
+        host = rospy.get_paran("~host")
+        port = rospy.get_param("~port")
+        com = ogameasure.ethernet(host, port)
+        self.sa = ogameasure.Keysite.N9343C(com)
+        self.pub = rospy.Publisher("/dev/n9343c/__IP__/spec", Float64MultiArry, queue_size=1)
+
+    def spec_publisher(self):
+        while no rospy.is_shutdown():
+            spec = self.sa.trace_data_query()
+            self.pub.publish(spec)
+            continue
+        return
+
+    def start_thread(self):
+        th = threading.Thread(target=self.spec_publisher)
+        th.setDaemon(True)
+        th.start()
+        
+if __name__ == '__main__':
+    rospy.init_node(name)
+
+    spec = n9343c()
+    spec.start_thread()
+    rospy.spin()
