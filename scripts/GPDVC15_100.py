@@ -56,7 +56,7 @@ class GPDVC15_100(object):
         for port in gpibport_list:
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
             t.append(topic)
-            [rospy.Subscriber(topic[i], Float64, d[i], callback_args=i) for i in range(len(gpibport_list))]
+            [rospy.Subscriber(t[i], Float64, d[i], callback_args=i) for i in range(len(gpibport_list))]
             time.sleep(1)
 
 
