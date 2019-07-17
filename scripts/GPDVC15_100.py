@@ -49,7 +49,7 @@ class GPDVC15_100(object):
         time.sleep(1)
         print(lo)
         print(q.data)
-        lo.output_set(msg)
+        lo.output_set(q.data)
         print(args)
         print(lo)
         print(q)
