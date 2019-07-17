@@ -14,13 +14,7 @@ class GPDVC15_100(object):
 
     def __init__(self):
         print("nandeya")
-<<<<<<< HEAD
-        host = "192.168.100.44"
-        #host = rospy.get_param("~host")
-        gpibport_list = eval("[4,5]")
-        #gpibport_list = eval(rospy.get_param("~gpibport_list"))
-=======
->>>>>>> 696017026711914c7b1264eea0764fb5db1f0071
+
         self.loatt = []
         print(gpibport_list)
         for i in gpibport_list:
@@ -31,7 +25,7 @@ class GPDVC15_100(object):
             self.loatt.append(loatt)
             time.sleep(1)
             print(self.loatt)
-
+        """
         topic1 = "/dev/gpdvc15_100rs/ip_192_168_100_44/port_4/i_cmd"
         rospy.Subscriber(topic1, Float64, self.set_output, callback_args=0)
         time.sleep(1)
@@ -40,17 +34,16 @@ class GPDVC15_100(object):
         rospy.Subscriber(topic2, Float64, self.set_output, callback_args=1)
         time.sleep(1)
         print(topic2)
+        """
 
-
-        #for i ,port in enumerate(gpibport_list):
-            #topic = "/dev/gpdvc15_100rs/ip_192_168_100_44/port_%d/i_cmd"%(port)
-            #topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
-            #print(topic)
-            #print("args")
-            #print(i)
-            #print(port)
-            #rospy.Subscriber(topic, Float64, self.set_output, callback_args=1)
-            #time.sleep(1)
+        for i ,port in enumerate(gpibport_list):
+            topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
+            print(topic)
+            print("args")
+            print(i)
+            print(port)
+            rospy.Subscriber(topic, Float64, self.set_output, callback_args=1)
+            time.sleep(1)
 
     def set_output(self,q,args):
         lo = self.loatt[args]
