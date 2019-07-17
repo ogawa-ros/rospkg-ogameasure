@@ -14,8 +14,6 @@ class GPDVC15_100(object):
 
     def __init__(self):
         print("nandeya")
-        host = rospy.get_param("~host")
-        gpibport_list = eval(rospy.get_param("~gpibport_list"))
         self.loatt = []
         print(gpibport_list)
         for i in gpibport_list:
@@ -48,5 +46,7 @@ class GPDVC15_100(object):
 
 if __name__ == "__main__" :
     rospy.init_node(name)
+    host = rospy.get_param("~host")
+    gpibport_list = eval(rospy.get_param("~gpibport_list"))
     loatt = GPDVC15_100()
     rospy.spin()
