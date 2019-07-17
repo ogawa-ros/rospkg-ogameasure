@@ -52,7 +52,7 @@ class GPDVC15_100(object):
 
 
     def set_output(self,q,args):
-        lo = self.loatt[args]
+        lo = self.loatt[0]
         time.sleep(1)
         print(lo)
         print(q.data)
@@ -61,7 +61,7 @@ class GPDVC15_100(object):
         return
 
     def set_output2(self,q,args):
-        lo = self.loatt[args]
+        lo = self.loatt[1]
         time.sleep(1)
         print(q.data)
         print(lo)
