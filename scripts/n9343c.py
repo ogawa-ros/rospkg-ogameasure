@@ -20,8 +20,8 @@ class n9343c(object):
 
     def spec_publisher(self):
         while not rospy.is_shutdown():
-            spec = self.sa.trace_data_query()
-            self.pub.publish(spec.tolist())
+            spec = Float64MultiArray(data=self.sa.trace_data_query())
+            self.pub.publish(spec)
             continue
         return
 
