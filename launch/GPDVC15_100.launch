@@ -6,7 +6,7 @@
         required="true"
         output="screen">
         <param name="~host" value="192.168.100.44" />
-        <param name="~gpibport_list" value="[4]" />
+        <param name="~gpibport_list" value="[4,5]" />
 
     <remap from = '/dev/gpdvc15_100rs/__IP__/port_4/i_cmd' to = '/dev/gpdvc15_100rs/ip_192_168_100_44/port_4/i_cmd'/>
 
