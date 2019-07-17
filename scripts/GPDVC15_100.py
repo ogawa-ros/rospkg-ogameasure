@@ -48,23 +48,17 @@ class GPDVC15_100(object):
     def set_output(self,q):
         #lo = self.loatt[args]
         time.sleep(1)
-        print(lo)
         print(q.data)
         lo.output_set(q.data)
-        print(args)
-        print(lo)
-        print(q)
+
         return
 
     def set_output2(self,q):
         #lo = self.loatt[args]
         time.sleep(1)
-        print(lo)
         print(q.data)
         lo.output_set(q.data)
-        print(args)
-        print(lo)
-        print(q)
+
         return
 
 if __name__ == "__main__" :
