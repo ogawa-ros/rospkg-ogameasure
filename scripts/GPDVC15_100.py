@@ -33,7 +33,7 @@ class GPDVC15_100(object):
             print("args")
             print(i)
             rospy.Subscriber(topic, Float64, self.set_output, callback_args=i)
-            time.sleep(30)
+            time.sleep(1)
 
     def set_output(self,q,args):
         lo = self.loatt[args]
