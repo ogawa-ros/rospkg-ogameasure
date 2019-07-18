@@ -28,7 +28,7 @@ class GPDVC15_100(object):
     def set_output(self,q,args):
         lo = self.loatt[args]
         lo.com.open()
-        loatt.output_set(q.data)
+        lo.output_set(q.data)
         lo.com.close()
         return
 
