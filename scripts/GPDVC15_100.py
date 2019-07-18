@@ -21,6 +21,7 @@ class GPDVC15_100(object):
             lo = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
             lo.com.close()
             self.loatt.append(lo)
+            time.sleep(30)
 
         for i, port in enumerate(gpibport_list):
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
@@ -30,7 +31,6 @@ class GPDVC15_100(object):
 
     def set_output(self,q,args):
         lo = self.loatt[args]
-        time.sleep(30)
         lo.com.open()
         lo.output_set(q.data)
         lo.com.close()
