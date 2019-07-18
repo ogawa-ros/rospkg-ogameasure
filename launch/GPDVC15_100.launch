@@ -15,7 +15,7 @@
 
 
   <node pkg = "rospkg-ogameasure"
-        name = "GPDVC15_100_port4"
+        name = "GPDVC15_100_port5"
         type = "GPDVC15_100_port5.py"
         required="true"
         output="screen">
