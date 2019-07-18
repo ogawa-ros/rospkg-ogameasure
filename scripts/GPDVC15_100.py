@@ -36,6 +36,6 @@ class GPDVC15_100(object):
 if __name__ == "__main__" :
     rospy.init_node(name)
     host = rospy.get_param("~host")
-    gpibport_list = eval(rospy.get_param("~gpibport"))
+    gpibport_list = eval(rospy.get_param("~gpibport_list"))
     att = GPDVC15_100()
     rospy.spin()
