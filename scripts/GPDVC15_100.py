@@ -30,10 +30,10 @@ class GPDVC15_100(object):
 
     def set_output(self,q,args):
         lo = self.loatt[args]
+        time.sleep(30)
         lo.com.open()
         lo.output_set(q.data)
         lo.com.close()
-        time.sleep(30)
         return
 
 
