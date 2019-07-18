@@ -30,5 +30,5 @@ if __name__ == "__main__" :
     rospy.init_node(name)
     host = rospy.get_param("~host")
     gpibport = eval(rospy.get_param("~gpibport"))
-    loatt = GPDVC15_100()
+    att = GPDVC15_100()
     rospy.spin()
