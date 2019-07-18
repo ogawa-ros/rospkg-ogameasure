@@ -1,30 +1,17 @@
 <launch>
 
   <node pkg = "rospkg-ogameasure"
-        name = "GPDVC15_100_port4"
-        type = "GPDVC15_100_port4.py"
+        name = "GPDVC15_100"
+        type = "GPDVC15_100.py"
         required="true"
         output="screen">
         <param name="~host" value="192.168.100.44" />
-        <param name="~gpibport" value="[4]" />
+        <param name="~gpibport" value="[4,5]" />
 
     <remap from = '/dev/gpdvc15_100rs/__IP__/port_4/i_cmd' to = '/dev/gpdvc15_100rs/ip_192_168_100_44/port_4/i_cmd'/>
-
-
-  </node>
-
-
-  <node pkg = "rospkg-ogameasure"
-        name = "GPDVC15_100_port5"
-        type = "GPDVC15_100_port5.py"
-        required="true"
-        output="screen">
-        <param name="~host" value="192.168.100.44" />
-        <param name="~gpibport" value="[5]" />
-
     <remap from = '/dev/gpdvc15_100rs/__IP__/port_5/i_cmd' to = '/dev/gpdvc15_100rs/ip_192_168_100_44/port_5/i_cmd'/>
 
-
   </node>
+
 
 </launch>
