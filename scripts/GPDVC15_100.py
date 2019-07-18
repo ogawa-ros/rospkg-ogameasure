@@ -33,7 +33,7 @@ class GPDVC15_100(object):
         lo.com.open()
         lo.output_set(q.data)
         lo.com.close()
-        time.sleep(20)
+        time.sleep(30)
         return
 
 
