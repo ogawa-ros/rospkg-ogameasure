@@ -15,12 +15,17 @@ class GPDVC15_100(object):
     def __init__(self):
 
         self.loatt = []
-        for i in gpibport_list:
-            gpibport = i
-            com = ogameasure.gpib_prologix(host, gpibport)
-            lo = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
-            self.loatt.append(lo)
-            lo.com.close()
+        #for i in gpibport_list:
+            #gpibport = i
+        com1 = ogameasure.gpib_prologix(host, 4)
+        lo1 = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com1)
+        lo1.com.close()
+        self.loatt.append(lo1)
+
+        com2 = ogameasure.gpib_prologix(host, 5)
+        lo2 = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com2)
+        lo2.com.close()
+        self.loatt.append(lo2)
 
         for i, port in enumerate(gpibport_list):
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
