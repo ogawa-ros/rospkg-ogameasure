@@ -14,7 +14,7 @@ class GPDVC15_100(object):
 
     def __init__(self):
 
-        self.att = []
+        self.loatt = []
         for i in gpibport_list:
             gpibport = i
             com = ogameasure.gpib_prologix(host, gpibport)
