@@ -19,8 +19,8 @@ class GPDVC15_100(object):
             gpibport = i
             com = ogameasure.gpib_prologix(host, gpibport)
             lo = ogameasure.ELVA1.GPDVC15.GPDVC15_100(com)
-            lo.com.close()
             self.loatt.append(lo)
+            lo.com.close()
 
         for i, port in enumerate(gpibport_list):
             topic = "/dev/gpdvc15_100rs/__IP__/port_%d/i_cmd"%(port)
