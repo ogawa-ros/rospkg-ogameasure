@@ -10,7 +10,7 @@ from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Int32
 
-class GPDVC15_100_port5(object):
+class GPDVC15_100(object):
 
     def __init__(self):
 
