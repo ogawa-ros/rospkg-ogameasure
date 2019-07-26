@@ -3,14 +3,14 @@
   <node pkg = "rospkg-ogamesure"
         name = "fsw0020"
         type = "fsw0020.py">
-        <param name="~host" value="" />
-        <param name="~port" value="" />
-    <remap from = '/dev/fsw0020/__IP__/freq_cmd' to = ''/>
-    <remap from = '/dev/fsw0020/__IP__/power_cmd' to = ''/>
-    <remap from = '/dev/fsw0020/__IP__/onoff_cmd' to = ''/>
-    <remap from = '/dev/fsw0020/__IP__/freq' to = ''/>
-    <remap from = '/dev/fsw0020/__IP__/power' to = ''/>
-    <remap from = '/dev/fsw0020/__IP__/onoff' to = ''/>
+        <param name="~host" value="192.168.100.182" />
+        <param name="~port" value="10001" />
+    <remap from = '/dev/fsw0020/__IP__/freq_cmd' to = '/dev/fsw0020/ip_192_168_100_182/freq_cmd'/>
+    <remap from = '/dev/fsw0020/__IP__/power_cmd' to = '/dev/fsw0020/ip_192_168_100_182/power_cmd'/>
+    <remap from = '/dev/fsw0020/__IP__/onoff_cmd' to = '/dev/fsw0020/ip_192_168_100_182/onoff_cmd'/>
+    <remap from = '/dev/fsw0020/__IP__/freq' to = '/dev/fsw0020/ip_192_168_100_182/freq'/>
+    <remap from = '/dev/fsw0020/__IP__/power' to = '/dev/fsw0020/ip_192_168_100_182/power'/>
+    <remap from = '/dev/fsw0020/__IP__/onoff' to = '/dev/fsw0020/ip_192_168_100_182/onoff'/>
 
   </node>
 
