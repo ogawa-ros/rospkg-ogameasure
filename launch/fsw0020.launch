@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg = "rospkg-ogamesure"
+  <node pkg = "rospkg-ogameasure"
         name = "fsw0020"
         type = "fsw0020.py">
         <param name="~host" value="192.168.100.182" />
