@@ -12,7 +12,7 @@ class agilent_11713B(object):
 
     def __init__(self):
         host = rospy.get_param("~host")
-        port = rospy.get_param("~port")
+        port = rospy.get_param("~gpibport")
         com = ogameasure.gpib_prologix(host, port)
         self.sw = ogameasure.Agilent.agilent_11713B(com)
 
