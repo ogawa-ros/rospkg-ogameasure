@@ -1,8 +1,8 @@
 <launch>
 
   <node pkg = "rospkg-ogameasure"
-        name = ""
-        type = ".py"
+        name = "11713B"
+        type = "11713B.py"
         required="true"
         output="screen">
         <param name="~host" value="192.168.100.186" />
