@@ -2,7 +2,7 @@
 
   <node pkg = "rospkg-ogameasure"
         name = "agilent_11713B"
-        type = "11713B.py">
+        type = "agilent_11713B.py">
         #required="true"
         #output="screen"
         <param name="~host" value="192.168.100.186" />
