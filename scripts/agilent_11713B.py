@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-name = "11713B"
+name = "agilent_11713B"
 
 import time
 import sys
