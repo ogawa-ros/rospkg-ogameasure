@@ -1,0 +1,16 @@
+<launch>
+
+  <node pkg = "rospkg-ogameasure"
+        name = "ml2437a"
+        type = "ml2437a.py">
+        <param name="~usb_port_li" value="['/dev/ttyACM0']" />
+
+        <param name="~ch" value="1" />
+
+
+    <remap from = '/dev/ma24126a/__port__/ch1' to = '/dev/ml2437a/ttyACM0/ch1'/>
+
+
+  </node>
+
+</launch>
