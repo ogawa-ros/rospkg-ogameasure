@@ -14,8 +14,8 @@ class ma24126a(object):
     def __init__(self):
         port_list = eval(rospy.get_param("~port_list"))
         ch_num = rospy.get_param("~ch_num")
-        self.pm = [ogameasure.Anritsu.ma24126a(ch_num) for port in port_list]
-        for i in range(len(port_list)):
+        self.pm = [ogameasure.Anritsu.ma24126a(port) for port in port_list]
+        for i in range(len(ch_num)):
             self.zero_set(i)
 
     def power(self,ch):
