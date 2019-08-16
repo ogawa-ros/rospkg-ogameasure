@@ -12,7 +12,7 @@ from std_msgs.msg import Int32
 
 class ma24126a(object):
     def __init__(self):
-        port_list = eval(rospy.get_param("~usb_port_li"))
+        port_list = eval(rospy.get_param("~port_list"))
         self.pm = [ogameasure.Anritsu.ma24126a(port) for port in port_list]
         for i in range(len(port_li)):
             self.zero_set(i)
