@@ -40,6 +40,7 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         for ch in range(0,ch_num):
             time.sleep(0.1)
-            power = usbpm.power(ch)
+            ret = str(usbpm.power(ch))
+            power = float(ret[2:9])
             publist[ch].publish(power)
         continue
