@@ -1,0 +1,17 @@
+<launch>
+
+  <node pkg = "rospkg-ogameasure"
+        name = "agilent_11713B"
+        type = "agilent_11713B.py">
+        #required="true"
+        #output="screen"
+        <param name="~host" value="192.168.100.186" />
+        <param name="~gpibport" value="10" />
+
+    <remap from = '/dev/87104b/__IP__/open_ch_cmd' to = '/dev/87104b/ip_192_168_100_186/open_ch_cmd'/>
+    <remap from = '/dev/87104b/__IP__/close_ch_cmd' to = '/dev/87104b/ip_192_168_100_186/close_ch_cmd'/>
+
+  </node>
+
+
+</launch>
