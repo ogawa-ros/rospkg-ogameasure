@@ -41,6 +41,6 @@ if __name__ == '__main__':
         for ch in range(0,ch_num):
             time.sleep(0.1)
             ret = usbpm.power(ch)
-            power = ret.decode().split('\n')[0]
+            power = float(ret.decode().split('\n')[0])
             publist[ch].publish(power)
         continue
