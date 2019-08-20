@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-node = "ml2437a"
+node = "ma24126a"
 
 import time
 import sys

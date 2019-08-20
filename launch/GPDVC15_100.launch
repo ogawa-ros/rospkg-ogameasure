@@ -1,10 +1,13 @@
 <launch>
+  <machine name="hinotoritz" address="192.168.100.188" env-loader="/root/ros/devel/env.sh" user="hinotoritz" password="hinotoritz" />
 
   <node pkg = "rospkg-ogameasure"
         name = "GPDVC15_100"
         type = "GPDVC15_100.py"
         required="true"
-        output="screen">
+        output="screen"
+        machine="hinotoritz"
+        >
         <param name="~host" value="192.168.100.44" />
         <param name="~gpibport_list" value="[4,5]" />
 
