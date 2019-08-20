@@ -3,7 +3,7 @@
   <node pkg = "rospkg-ogameasure"
         name = "ma24126a"
         type = "ma24126a.py">
-        <param name="~port_list" value="['/dev/ttyACM0','/dev/ttyACM0']" />
+        <param name="~port_list" value="['/dev/ttyACM0','/dev/ttyACM1']" />
 
         <param name="~ch_num" value="2" />
 
