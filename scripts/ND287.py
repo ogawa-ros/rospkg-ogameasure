@@ -10,7 +10,7 @@ from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Int32
 
-class ma24126a(object):
+class ND287(object):
     def __init__(self):
         az_port = eval(rospy.get_param("~az_usbport"))
         el_port = eval(rospy.get_param("~el_usbport"))
@@ -46,15 +46,13 @@ class ma24126a(object):
 
 if __name__ == '__main__':
     rospy.init_node(node)
-    ch_num = rospy.get_param("~ch_num")
-    publist = [rospy.Publisher("/dev/ma24126a/__port__/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
-    usbpm = ma24126a()
+    pub_az = rospy.Publisher("/dev/ND287/__port__/az", Float64, queue_size=1)
+    pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
 
+    encorder = ND287()
 
     while not rospy.is_shutdown():
-        for ch in range(0,ch_num):
-            time.sleep(0.1)
-            ret = usbpm.power(ch)
-            power = float(ret.decode().split('\n')[0])
-            publist[ch].publish(power)
+        ret = ND287.get_az(ch)
+        az = float(ret)
+        pub_az.publish(az)
         continue
