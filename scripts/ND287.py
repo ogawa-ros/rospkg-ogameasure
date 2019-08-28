@@ -12,8 +12,8 @@ from std_msgs.msg import Int32
 
 class ND287(object):
     def __init__(self):
-        az_port = eval(rospy.get_param("~az_usbport"))
-        el_port = eval(rospy.get_param("~el_usbport"))
+        az_port = rospy.get_param("~az_usbport")
+        el_port = rospy.get_param("~el_usbport")
         self.encorder_az = ogameasure.HEIDENHAIN.ND287(az_port)
         #self.encorder_el = ogameasure.HEIDENHAIN.ND287(el_port)
 
