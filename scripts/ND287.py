@@ -14,8 +14,8 @@ class ND287(object):
     def __init__(self):
         az_port = eval(rospy.get_param("~az_usbport"))
         el_port = eval(rospy.get_param("~el_usbport"))
-        self.encorder_az = ogameasure.HEIDENHAIN.ND278(az_port)
-        #self.encorder_el = ogameasure.HEIDENHAIN.ND278(el_port)
+        self.encorder_az = ogameasure.HEIDENHAIN.ND287(az_port)
+        #self.encorder_el = ogameasure.HEIDENHAIN.ND287(el_port)
 
     def set_display(self):
         self.encorder_az.press_key("soft1")
