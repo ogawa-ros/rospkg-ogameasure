@@ -52,7 +52,7 @@ if __name__ == '__main__':
     pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
 
     encorder = ND287()
-    encorder.set_display()
+    #encorder.set_display()
     while not rospy.is_shutdown():
         ret = encorder.get_az()
         pub_az.publish(float(az))
