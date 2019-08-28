@@ -2,19 +2,14 @@
 
   <node pkg = "rospkg-ogameasure"
         name = "ma24126a"
-<<<<<<< HEAD
         type = "ma24126a.py">
-=======
-        type = "ma24126a.py"
-        output = "screen">
->>>>>>> de5a6ff39195bf5f92daa7219915f67f6a77c24b
-        <param name="~port_list" value="['/dev/ttyACM0','/dev/ttyACM1']" />
 
-        <param name="~ch_num" value="2" />
+        <param name="~port_list" value="['/dev/ttyACM1']" />
+
+        <param name="~ch_num" value="1" />
 
 
-    <remap from = '/dev/ma24126a/__port__/ch1' to = '/dev/ma24126a/ttyACM0/ch1'/>
-    <remap from = '/dev/ma24126a/__port__/ch2' to = '/dev/ma24126a/ttyACM1/ch2'/>
+    <remap from = '/dev/ma24126a/__port__/ch1' to = '/dev/ma24126a/ttyACM1/ch1'/>
 
 
 
