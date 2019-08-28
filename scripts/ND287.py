@@ -42,6 +42,7 @@ class ND287(object):
 
     def get_el(self):
         _el = self.encorder_el.output_position_display_value()
+        el = float(_el.strip(b"\x02\x00\r\n").decode())
         return el
 
 
@@ -51,9 +52,8 @@ if __name__ == '__main__':
     pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
 
     encorder = ND287()
-
+    ND287.set_display()
     while not rospy.is_shutdown():
         ret = ND287.get_az()
-        az = float(ret)
-        pub_az.publish(az)
+        pub_az.publish(float(az))
         continue
