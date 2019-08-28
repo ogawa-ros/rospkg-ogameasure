@@ -54,6 +54,6 @@ if __name__ == '__main__':
     encorder = ND287()
     encorder.set_display()
     while not rospy.is_shutdown():
-        ret = ND287.get_az()
+        ret = encorder.get_az()
         pub_az.publish(float(az))
         continue
