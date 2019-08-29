@@ -14,7 +14,7 @@ class ma24126a(object):
     def __init__(self):
         port_list = eval(rospy.get_param("~port_list"))
         self.pm = [ogameasure.Anritsu.ma24126a(port) for port in port_list]
-        [rospy.Subscriber("/dev/ma24126a/__port__/zero_set/ch{0}".format(ch), Int32, self.zero_set, callback_args=ch) for ch in range(1,ch_num+1)]
+        [rospy.Subscriber("/dev/ma24126a/__port__/zero_set/{0}".format(ch), Int32, self.zero_set, callback_args=ch) for ch in range(1,ch_num+1)]
 
         for ch in range(ch_num):
             self.pm[ch].start()
@@ -38,7 +38,7 @@ class ma24126a(object):
 if __name__ == '__main__':
     rospy.init_node(node)
     ch_num = rospy.get_param("~ch_num")
-    publist = [rospy.Publisher("/dev/ma24126a/__port__/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
+    publist = [rospy.Publisher("/dev/ma24126a/__port__/{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
     usbpm = ma24126a()
 
