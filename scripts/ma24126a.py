@@ -13,29 +13,34 @@ from std_msgs.msg import Int32
 class ma24126a(object):
     def __init__(self):
         port_list = eval(rospy.get_param("~port_list"))
-        ch_num = rospy.get_param("~ch_num")
         self.pm = [ogameasure.Anritsu.ma24126a(port) for port in port_list]
-        #for i in range(ch_num):
-        #    self.zero_set(i)
+        [rospy.Subscriber("/dev/ma24126a/__port__/zero_set/ch{0}".format(ch), Int32, self.zero_set, callback_args=ch) for ch in range(1,ch_num+1)]
+
+        for ch in range(ch_num):
+            self.pm[ch].start()
 
     def power(self,ch):
         power = self.pm[ch].power()
         return power
 
-    def zero_set(self,ch):
-        print("##### usb power meter is doing zero setting now ####")
-        self.pm[ch].zero_set()
-        print("##### usb power meter finished zero setting  ####")
-
+    def zero_set(self, q, args):
+        if q.data == 1:
+            print("##### usb power meter is doing zero setting now ####")
+            self.pm[args-1].zero_set()
+            print("##### usb power meter finished zero setting  ####")
+        else:
+            pass
         return
+
+
 
 
 if __name__ == '__main__':
     rospy.init_node(node)
     ch_num = rospy.get_param("~ch_num")
     publist = [rospy.Publisher("/dev/ma24126a/__port__/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
-    usbpm = ma24126a()
 
+    usbpm = ma24126a()
 
     while not rospy.is_shutdown():
         for ch in range(0,ch_num):

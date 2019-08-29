@@ -4,14 +4,14 @@
         name = "ma24126a"
         type = "ma24126a.py">
 
-        <param name="~port_list" value="['/dev/ttyACM1']" />
+        <param name="~port_list" value="['/dev/ttyACM1','/dev/ttyACM1']" />
 
-        <param name="~ch_num" value="1" />
+        <param name="~ch_num" value="2" />
 
-
-    <remap from = '/dev/ma24126a/__port__/ch1' to = '/dev/ma24126a/ttyACM1/ch1'/>
-
-
+    <remap from = '/dev/ma24126a/__port__/power/ch1' to = '/dev/ma24126a/ttyACM1/power/ch1'/>
+    <remap from = '/dev/ma24126a/__port__/power/ch2' to = '/dev/ma24126a/ttyACM1/power/ch2'/>
+    <remap from = '/dev/ma24126a/__port__/zero_set/ch1' to = '/dev/ma24126a/ttyACM1/zero_set/ch1'/>
+    <remap from = '/dev/ma24126a/__port__/zero_set/ch2' to = '/dev/ma24126a/ttyACM1/zero_set/ch2'/>
 
   </node>
 

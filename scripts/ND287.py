@@ -17,7 +17,7 @@ class ND287(object):
         self.encorder_az = ogameasure.HEIDENHAIN.ND287(az_port)
         #self.encorder_el = ogameasure.HEIDENHAIN.ND287(el_port)
 
-    def set_display(self):
+    def setting(self):
         self.encorder_az.press_key("soft1")
         self.encorder_az.press_key("soft1")
         self.encorder_az.press_key("9")
