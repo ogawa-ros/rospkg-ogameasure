@@ -10,7 +10,7 @@ from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Int32
 
-class fsw0010(self):
+class fsw0010(object):
     def __init__(self):
         host = rospy.get_param("~host")
         port = rospy.get_param("~port")
