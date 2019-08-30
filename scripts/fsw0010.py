@@ -42,7 +42,7 @@ class fsw0010(object):
         self.query_freq.publish(freq)
         return
 
-    def set_onoff(self):
+    def set_onoff(self,q):
         self.sg.output_set(q.data)
         return
 
