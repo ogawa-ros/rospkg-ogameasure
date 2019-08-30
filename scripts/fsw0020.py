@@ -39,74 +39,11 @@ class fsw0020(object):
         self.sg.power_set(q.data)
         return
 
-    def set_onoff(self):
+    def set_onoff(self,q):
         self.sg.output_set(q.data)
         return
 
-    def query_freq(self):
-        while not rospy.is_shutdown():
-            time.sleep(10)
-            freq = self.sg.freq_query()
-            self.query_freq.publish(freq)
-            continue
 
-    def query_power(self):
-        while not rospy.is_shutdown():
-            time.sleep(10)
-            power = self.sg.power_query()
-            self.query_power.publish(power)
-            continue
-
-    def query_onoff(self):
-        while not rospy.is_shutdown():
-            time.sleep(10)
-            freq = self.sg.output_query()
-            self.query_onoff.publish(onoff)
-            continue
-
-
-    """
-    def query_onoff(self):
-        while not rospy.is_shutdown():
-            if self.onoff_flag == 0:
-                time.sleep(10)
-                continue
-            else:
-                onoff = self.sg.output_query()
-                self.query_onoff.publish(onoff)
-                self.onoff_flag == 0
-            continue
-
-    def query_freq(self):
-        while not rospy.is_shutdown():
-            if self.freq_flag == 0:
-                continue
-            else:
-                onoff = self.sg.freq_query()
-                self.query_freq.publish(onoff)
-                self.freq_flag == 0
-            continue
-
-    def query_freq(self):
-        while not rospy.is_shutdown():
-            if self.power_flag == 0:
-                continue
-            else:
-                onoff = self.sg.power_query()
-                self.query_power.publish(onoff)
-                self.power_flag == 0
-            continue
-    """
-    def start_thread(self):
-        th = threading.Thread(target=self.query_onoff)
-        th.setDaemon(True)
-        th.start()
-        th = threading.Thread(target=self.query_power)
-        th.setDaemon(True)
-        th.start()
-        th = threading.Thread(target=self.query_freq)
-        th.setDaemon(True)
-        th.start()
 
 if __name__ == '__main__':
     rospy.init_node(name)
