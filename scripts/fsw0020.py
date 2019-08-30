@@ -111,5 +111,5 @@ class fsw0020(object):
 if __name__ == '__main__':
     rospy.init_node(name)
     sg = fsw0020()
-    sg.start_thread()
+    #sg.start_thread()
     rospy.spin()
