@@ -55,7 +55,7 @@ if __name__ == '__main__':
     #encorder.set_display()
     while not rospy.is_shutdown():
         az = encorder.get_az()
-        pub_.publish(float(az))
+        pub_az.publish(float(az))
         el = encorder.get_el()
         pub_el.publish(float(el))
         continue
