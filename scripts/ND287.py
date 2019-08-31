@@ -15,7 +15,7 @@ class ND287(object):
         az_port = rospy.get_param("~az_usbport")
         el_port = rospy.get_param("~el_usbport")
         self.encorder_az = ogameasure.HEIDENHAIN.ND287(az_port)
-        #self.encorder_el = ogameasure.HEIDENHAIN.ND287(el_port)
+        self.encorder_el = ogameasure.HEIDENHAIN.ND287(el_port)
 
     def setting(self):
         self.encorder_az.press_key("soft1")
@@ -55,5 +55,7 @@ if __name__ == '__main__':
     #encorder.set_display()
     while not rospy.is_shutdown():
         az = encorder.get_az()
-        pub_az.publish(float(az))
+        pub_.publish(float(az))
+        el = encorder.get_el()
+        pub_el.publish(float(el))
         continue
