@@ -48,6 +48,7 @@ class ND287(object):
 
 if __name__ == '__main__':
     rospy.init_node(node)
+    time.sleep(0.01)
     pub_az = rospy.Publisher("/dev/ND287/__port__/az", Float64, queue_size=1)
     pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
 
