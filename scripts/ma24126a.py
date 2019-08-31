@@ -19,19 +19,40 @@ class ma24126a(object):
         for ch in range(ch_num):
             self.pm[ch].start()
 
+        self.switch = 1
+
+    def switch(self,q):
+        self.switch = q.data
+
     def power(self,ch):
-        power = self.pm[ch].power()
-        return power
+        while not rospy.is_shutdown():
+            if self.switch == 0:
+                time.sleep(0.001)
+                continue
+            elif self.switch == 1:
+                for ch in range(0,ch_num):
+                    time.sleep(0.1)
+                    power = self.pm[ch].power()
+                    power = float(ret.decode().split('\n')[0])
+                    publist[ch].publish(power)
+            continue
 
     def zero_set(self, q, args):
         if q.data == 1:
+            self.switch = 0
+            time.sleep(0.1)
             print("##### usb power meter is doing zero setting now ####")
             self.pm[args-1].zero_set()
             print("##### usb power meter finished zero setting  ####")
+            self.switch = 0
         else:
             pass
         return
 
+    def start_thread(self):
+        th = threading.Thread(target=self.power)
+        th.setDaemon(True)
+        th.start()
 
 
 
@@ -41,11 +62,5 @@ if __name__ == '__main__':
     publist = [rospy.Publisher("/dev/ma24126a/__port__/{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
     usbpm = ma24126a()
-
-    while not rospy.is_shutdown():
-        for ch in range(0,ch_num):
-            time.sleep(0.1)
-            ret = usbpm.power(ch)
-            power = float(ret.decode().split('\n')[0])
-            publist[ch].publish(power)
-        continue
+    usbpm.start_thread()
+    rospy.spin()
