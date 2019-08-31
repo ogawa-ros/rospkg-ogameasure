@@ -18,10 +18,8 @@ class fsw0020(object):
         com = ogameasure.ethernet(host, port)
         self.sg = ogameasure.Phasematrix.FSW0010(com)
 
-        self.query_freq = rospy.Publisher("/dev/fsw0020/__IP__/freq", Float64, queue_size=1)
-        self.query_power = rospy.Publisher("/dev/fsw0020/__IP__/power", Float64, queue_size=1)
-        self.query_onoff = rospy.Publisher("/dev/fsw0020/__IP__/onoff", String, queue_size=1)
-        rospy.Subscriber("/dev/fsw0020/__IP__/freq_cmd", Float64, self.set_freq)
+
+        rospy.Subscriber("/dev/fsw0020/__IP__/f_cmd", Float64, self.set_freq)
         rospy.Subscriber("/dev/fsw0020/__IP__/power_cmd", Float64, self.set_power)
         rospy.Subscriber("/dev/fsw0020/__IP__/onoff_cmd", String, self.set_onoff)
 
