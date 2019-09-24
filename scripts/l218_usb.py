@@ -22,7 +22,7 @@ class l218(object):
     def temp_publisher(self,ch=0):
         while not rospy.is_shutdown():
             for i in range(ch_num):
-                temp = list(self.l218.kelvin_reading_query(ch=0,terminator=\r\n))
+                temp = list(self.l218.kelvin_reading_query(ch=0))
                 self.pub_list[i].publish(temp[i])
                 time.sleep(2)
             continue
