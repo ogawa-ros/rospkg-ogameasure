@@ -14,9 +14,9 @@ class tpg261_lan(object):
         com = ogameasure.ethernet(host,int(port))
         self.tpg = ogameasure.Pfeiffer.tpg261(com)
 
-        self.pub_p = rospy.Publisher("/dev/tpg/192.168.100.83/pressure", Float64, queue_size=1)
-        self.pub_s = rospy.Publisher("/dev/tpg/192.168.100.83/state", String, queue_size=1)
-        self.pub_t = rospy.Publisher("/dev/tpg/192.168.100.83/turn", String, queue_size=1)
+        self.pub_p = rospy.Publisher("/dev/tpg/ip_192_168_100_83/pressure", Float64, queue_size=1)
+        self.pub_s = rospy.Publisher("/dev/tpg/ip_192_168_100_83/state", String, queue_size=1)
+        self.pub_t = rospy.Publisher("/dev/tpg/ip_192_168_100_83/turn", String, queue_size=1)
 
     def query_pressure(self):
         while not rospy.is_shutdown():
