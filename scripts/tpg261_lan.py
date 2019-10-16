@@ -21,6 +21,7 @@ class tpg261_lan(object):
     def query_pressure(self):
         while not rospy.is_shutdown():
             p = self.tpg.pressure()
+	    time.sleep(3)
             self.pub_p.publish(p)
 
     def tpg_state(self):
