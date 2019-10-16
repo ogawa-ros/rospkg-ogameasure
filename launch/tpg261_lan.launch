@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg = "rospkg-ogamaesure"
+  <node pkg = "rospkg-ogameasure"
         name = "tpg261_lan"
         type = "tpg261_lan.py">
         <param name="~host" value="192.168.100.83" />

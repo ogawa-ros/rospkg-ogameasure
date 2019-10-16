@@ -12,7 +12,7 @@ class tpg261_lan(object):
         host = rospy.get_param("~host")
         port = rospy.get_param("~port")
         com = ogameasure.ethernet(host,int(port))
-        self.tpg = ogameasure.Pfeiffer.tpg261(com)
+        self.tpg = ogameasure.Pfeiffer.tpg261_lan(com)
 
         self.pub_p = rospy.Publisher("/dev/tpg/ip_192_168_100_83/pressure", Float64, queue_size=1)
         self.pub_s = rospy.Publisher("/dev/tpg/ip_192_168_100_83/state", String, queue_size=1)
@@ -48,7 +48,7 @@ class tpg261_lan(object):
 
 if __name__ == "__main__" :
     rospy.init_node(name)
-    tpg = tpg261()
+    tpg = tpg261_lan()
     thread_tpg = threading.Thread(target=tpg.query_pressure)
     thread_tpg.start()
     tpg.query_pressure()
