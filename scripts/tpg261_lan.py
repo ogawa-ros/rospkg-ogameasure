@@ -52,5 +52,4 @@ if __name__ == "__main__" :
     tpg = tpg261_lan()
     thread_tpg = threading.Thread(target=tpg.query_pressure)
     thread_tpg.start()
-    tpg.query_pressure()
     rospy.spin()
