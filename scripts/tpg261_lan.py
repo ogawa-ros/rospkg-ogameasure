@@ -47,9 +47,13 @@ class tpg261_lan(object):
     def check_unit_pa(self):
         self.pres_unit_pa()
 
+    def start_thread(self):
+        th = threading.Thread(target=self.query_pressure)
+        th.setDaemon(True)
+        th.start()
+
 if __name__ == "__main__" :
     rospy.init_node(name)
     tpg = tpg261_lan()
-    thread_tpg = threading.Thread(target=tpg.query_pressure)
-    thread_tpg.start()
+    tpg.start_thread()
     rospy.spin()
