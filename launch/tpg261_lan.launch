@@ -1,0 +1,13 @@
+<launch>
+
+  <node pkg = "rospkg-ogamaesure"
+        name = "tpg261_lan"
+        type = "tpg261_lan.py">
+        <param name="~host" value="192.168.100.83" />
+        <param name="~port" value="8000" />
+
+    <remap from = '/dev/tpg/__port__/press' to = '/dev/tpg/192.168.100.83/pressure'/>
+
+  </node>
+
+</launch>
