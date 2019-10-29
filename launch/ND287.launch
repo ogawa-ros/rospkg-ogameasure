@@ -12,7 +12,6 @@
     <remap from = '/dev/ND287/__port__/el' to = '/dev/ND287/ttyUSB1/el'/>
 
 
-
   </node>
 
 </launch>
