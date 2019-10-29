@@ -8,8 +8,8 @@
         <param name="~el_usbport" value="/dev/ttyUSB1" />
 
 
-    <remap from = '/dev/ND287/__port__/az' to = '/dev/ma24126a/ttyUSB0/az'/>
-    <remap from = '/dev/ND287/__port__/el' to = '/dev/ma24126a/ttyUSB1/el'/>
+    <remap from = '/dev/ND287/__port__/az' to = '/dev/ND287/ttyUSB0/az'/>
+    <remap from = '/dev/ND287/__port__/el' to = '/dev/ND287/ttyUSB1/el'/>
 
 
 
