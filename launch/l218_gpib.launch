@@ -1,8 +1,8 @@
 <launch>
 
   <node pkg = "rospkg-ogameasure"
-        name = "l218"
-        type = "l218.py">
+        name = "l218_gpib"
+        type = "l218_gpib.py">
         <param name="~host" value="192.168.100.12" />
         <param name="~gpibport" value="13" />
         <param name="~ch" value="4" />

@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-name = "l218"
+name = "l218_gpib"
 
 import time
 import sys
