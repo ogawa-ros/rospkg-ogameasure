@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg = "rospkg-ogamaesure"
+  <node pkg = "rospkg-ogameasure"
         name = "m100"
         type = "m100.py">
   </node>
