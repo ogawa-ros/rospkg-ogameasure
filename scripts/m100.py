@@ -30,4 +30,5 @@ class m100(object):
 
 if __name__ == "__main__" :
     rospy.init_node(name)
+    m100()
     rospy.spin()
