@@ -9,8 +9,8 @@ from std_msgs.msg import Float64
 from std_msgs.msg import String
 
 class m100(object):
-    self.az = ""
-    self.el = ""
+    az = ""
+    el = ""
     def __init__(self):
         self.m100 = ogameasure.Canon.M100_raspi
         rospy.Subscriber("/dev/m100/capture/mode_cmd",String, self.capture_image)
