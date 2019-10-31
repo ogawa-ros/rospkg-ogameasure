@@ -11,6 +11,7 @@ from std_msgs.msg import String
 class m100(object):
     az = ""
     el = ""
+    path = "/home/m100raspi/data/optical-pointing/"
     def __init__(self):
         self.m100 = ogameasure.Canon.M100_raspi.m100()
         rospy.Subscriber("/dev/m100/capture/mode_cmd",String, self.capture_image)
@@ -26,8 +27,9 @@ class m100(object):
     def capture_image(self,q):
         mode = q
         timestr = time.strftime('%Y%m%d_%H.%M.%S', time.strptime(time.ctime()))
-        savedir = timestr + "_az_" + str(self.az) +"_el_" + str(self.el) + ".JPG"
-        self.m100.capture(savedir)
+        savename = "/" + timestr + "_az_" + str(self.az) +"_el_" + str(self.el) + ".JPG"
+        savepath = path +
+        self.m100.capture(savepath)
 
 if __name__ == "__main__" :
     rospy.init_node(name)
