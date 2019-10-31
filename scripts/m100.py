@@ -12,7 +12,7 @@ class m100(object):
     az = ""
     el = ""
     def __init__(self):
-        self.m100 = ogameasure.Canon.M100_raspi
+        self.m100 = ogameasure.Canon.M100_raspi.m100()
         rospy.Subscriber("/dev/m100/capture/mode_cmd",String, self.capture_image)
         rospy.Subscriber("/necst_telescope/coordinate/apparent_az_cmd",Float64, self.recieve_az)
         rospy.Subscriber("/necst_telescope/coordinate/apparent_el_cmd",Float64, self.recieve_el)
