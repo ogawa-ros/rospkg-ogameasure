@@ -24,6 +24,7 @@ class m100(object):
         self.el = q.data
 
     def capture_image(self,q):
+        mode = q
         timestr = time.strftime('%Y%m%d_%H.%M.%S', time.strptime(time.ctime()))
         savedir = timestr + "_az_" + str(self.az) +"_el_" + str(self.el) + ".JPG"
         self.m100.capture(savedir)
