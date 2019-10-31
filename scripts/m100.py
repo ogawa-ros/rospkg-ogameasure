@@ -28,7 +28,7 @@ class m100(object):
         mode = q
         timestr = time.strftime('%Y%m%d_%H.%M.%S', time.strptime(time.ctime()))
         savename = "/" + timestr + "_az_" + str(self.az) +"_el_" + str(self.el) + ".JPG"
-        savepath = path + savename
+        savepath = self.path + savename
         self.m100.capture(savepath)
 
 if __name__ == "__main__" :
