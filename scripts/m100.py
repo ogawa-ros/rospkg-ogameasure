@@ -19,10 +19,10 @@ class m100(object):
         rospy.Subscriber("/necst_telescope/coordinate/apparent_el_cmd",Float64, self.recieve_el)
 
     def recieve_az(self,q):
-        self.az = q.data
+        self.az = round(q.data,5)
 
     def recieve_el(self,q):
-        self.el = q.data
+        self.el = round(q.data,5)
 
     def capture_image(self,q):
         mode = q
