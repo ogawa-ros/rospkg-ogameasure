@@ -12,10 +12,14 @@ from std_msgs.msg import Int32
 
 class ND287(object):
     def __init__(self):
+        self.az_count = 0
+        self.az = get_az()
         az_port = rospy.get_param("~az_usbport")
         el_port = rospy.get_param("~el_usbport")
         self.encorder_az = ogameasure.HEIDENHAIN.ND287(az_port)
         self.encorder_el = ogameasure.HEIDENHAIN.ND287(el_port)
+        self.pub_az = rospy.Publisher("/dev/ND287/__port__/az", Float64, queue_size=1)
+        self.pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
 
     def setting(self):
         self.encorder_az.press_key("soft1")
@@ -35,28 +39,46 @@ class ND287(object):
         self.encorder_az.press_key("ENT")
         self.encorder_az.press_key("CLR")
 
+    def pub_az(self):
+        while not rospy.is_shutdown():
+            az = self.az
+            az2  = self.get_az()
+            hensa = az2-az
+            if hensa > 100:
+                count = count - 1
+            if hensa < -100:
+                count = count + 1
+            azaz = az2 + self.count*360
+            self.pub_az.publish(float(azaz))
+            self.az = az
+            time.sleep(0.01)
+            continue
+
     def get_az(self):
         _az = self.encorder_az.output_position_display_value()
         az = float(_az.strip(b"\x02\x00\r\n").decode())
+        az = encorder.get_az()
         return az
 
     def get_el(self):
-        _el = self.encorder_el.output_position_display_value()
-        el = float(_el.strip(b"\x02\x00\r\n").decode())
-        return el
+        while not rospy.is_shutdown():
+            _el = self.encorder_el.output_position_display_value()
+            el = float(_el.strip(b"\x02\x00\r\n").decode())
+            el = encorder.get_el()
+            self.pub_el.publish(float(el))
+            time.sleep(0.01)
+            continue
+
+    def start_thread(self):
+        th = threading.Thread(target = self.get_az)
+        th.setDaemon(True)
+        th.start()
+        check = threading.Thread(target = self.get_el)
+        check.setDaemon(True)
+        check.start()
 
 
 if __name__ == '__main__':
     rospy.init_node(node)
-    time.sleep(0.01)
-    pub_az = rospy.Publisher("/dev/ND287/__port__/az", Float64, queue_size=1)
-    pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
-
     encorder = ND287()
-    #encorder.set_display()
-    while not rospy.is_shutdown():
-        az = encorder.get_az()
-        pub_az.publish(float(az))
-        el = encorder.get_el()
-        pub_el.publish(float(el))
-        continue
+    encorder.start_thread()
