@@ -33,7 +33,7 @@ class ND287(object):
                 count = count + 1
             azaz = az2 + count*360
             self.pub_az.publish(float(azaz))
-            self.az = az
+            self.az = azaz
             time.sleep(0.01)
             continue
 
