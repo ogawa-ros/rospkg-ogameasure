@@ -69,7 +69,7 @@ class ND287(object):
             continue
 
     def start_thread(self):
-        th = threading.Thread(target = self.get_az)
+        th = threading.Thread(target = self.pub_az)
         th.setDaemon(True)
         th.start()
         check = threading.Thread(target = self.get_el)
