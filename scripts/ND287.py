@@ -13,7 +13,6 @@ from std_msgs.msg import Int32
 
 class ND287(object):
     def __init__(self):
-        self.az_count = 0
         az_port = rospy.get_param("~az_usbport")
         el_port = rospy.get_param("~el_usbport")
         self.encorder_az = ogameasure.HEIDENHAIN.ND287(az_port)
@@ -22,32 +21,14 @@ class ND287(object):
         self.pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
         self.az = self.get_az()
 
-    def setting(self):
-        self.encorder_az.press_key("soft1")
-        self.encorder_az.press_key("soft1")
-        self.encorder_az.press_key("9")
-        self.encorder_az.press_key("5")
-        self.encorder_az.press_key("1")
-        self.encorder_az.press_key("4")
-        self.encorder_az.press_key("8")
-        self.encorder_az.press_key("ENT")
-        self.encorder_az.press_key("down")
-        self.encorder_az.press_key("down")
-        self.encorder_az.press_key("ENT")
-        self.encorder_az.press_key("NAVI")
-        self.encorder_az.press_key("down")
-        self.encorder_az.press_key("soft1")
-        self.encorder_az.press_key("ENT")
-        self.encorder_az.press_key("CLR")
-
-    def pub_az(self):
+    def publish_az(self):
         while not rospy.is_shutdown():
             az = self.az
             az2  = self.get_az()
             hensa = az2-az
             if hensa > 100:
                 count = count - 1
-            elif hensa < -100:
+            elif:hensa < -100:
                 count = count + 1
             azaz = az2 + self.count*360
             self.pub_az.publish(float(azaz))
@@ -69,7 +50,7 @@ class ND287(object):
             continue
 
     def start_thread(self):
-        th = threading.Thread(target = self.pub_az)
+        th = threading.Thread(target = self.publish_az)
         th.setDaemon(True)
         th.start()
         check = threading.Thread(target = self.get_el)
