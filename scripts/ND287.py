@@ -47,7 +47,7 @@ class ND287(object):
             hensa = az2-az
             if hensa > 100:
                 count = count - 1
-            if hensa < -100:
+            else hensa < -100:
                 count = count + 1
             azaz = az2 + self.count*360
             self.pub_az.publish(float(azaz))
@@ -81,3 +81,4 @@ if __name__ == '__main__':
     rospy.init_node(node)
     encorder = ND287()
     encorder.start_thread()
+    rospy.spin()
