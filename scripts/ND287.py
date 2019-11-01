@@ -13,13 +13,13 @@ from std_msgs.msg import Int32
 class ND287(object):
     def __init__(self):
         self.az_count = 0
-        self.az = self.get_az()
         az_port = rospy.get_param("~az_usbport")
         el_port = rospy.get_param("~el_usbport")
         self.encorder_az = ogameasure.HEIDENHAIN.ND287(az_port)
         self.encorder_el = ogameasure.HEIDENHAIN.ND287(el_port)
         self.pub_az = rospy.Publisher("/dev/ND287/__port__/az", Float64, queue_size=1)
         self.pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
+        self.az = self.get_az()
 
     def setting(self):
         self.encorder_az.press_key("soft1")
