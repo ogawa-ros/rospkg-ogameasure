@@ -22,6 +22,7 @@ class ND287(object):
         self.az = self.get_az()
 
     def publish_az(self):
+        count = 0
         while not rospy.is_shutdown():
             az = self.az
             az2  = self.get_az()
@@ -30,7 +31,7 @@ class ND287(object):
                 count = count - 1
             elif hensa < -100:
                 count = count + 1
-            azaz = az2 + self.count*360
+            azaz = az2 + count*360
             self.pub_az.publish(float(azaz))
             self.az = az
             time.sleep(0.01)
