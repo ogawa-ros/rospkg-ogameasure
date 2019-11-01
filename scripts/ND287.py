@@ -57,14 +57,12 @@ class ND287(object):
     def get_az(self):
         _az = self.encorder_az.output_position_display_value()
         az = float(_az.strip(b"\x02\x00\r\n").decode())
-        az = encorder.get_az()
         return az
 
     def get_el(self):
         while not rospy.is_shutdown():
             _el = self.encorder_el.output_position_display_value()
             el = float(_el.strip(b"\x02\x00\r\n").decode())
-            el = encorder.get_el()
             self.pub_el.publish(float(el))
             time.sleep(0.01)
             continue
