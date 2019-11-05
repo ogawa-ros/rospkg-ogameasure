@@ -46,9 +46,9 @@ class ND287(object):
             az2  = self.get_az()
             hensa = az2-az
             if hensa > 100: #0->360
-                count = count + 1
-            elif hensa < -100: #360->0
                 count = count - 1
+            elif hensa < -100: #360->0
+                count = count + 1
             azaz = az2 + count*360
             self.pub_az.publish(float(azaz))
             #self.pub_az.publish(float(az2))
