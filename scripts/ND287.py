@@ -21,6 +21,24 @@ class ND287(object):
         self.pub_el = rospy.Publisher("/dev/ND287/__port__/el", Float64, queue_size=1)
         self.az = self.get_az()
 
+
+    def get_az(self):
+        _az = self.encorder_az.output_position_display_value()
+        az = float(_az.strip(b"\x02\x00\r\n").decode())
+        return az
+
+    def get_el(self):
+        _el = self.encorder_el.output_position_display_value()
+        el = float(_az.strip(b"\x02\x00\r\n").decode())
+        return el
+
+    def publish_el(self):
+        while not rospy.is_shutdown():
+            el = self.get_el()
+            self.pub_el.publish(float(el))
+            time.sleep(0.01)
+            continue
+
     def publish_az(self):
         count = 0
         while not rospy.is_shutdown():
@@ -35,19 +53,6 @@ class ND287(object):
             self.pub_az.publish(float(azaz))
             #self.pub_az.publish(float(az2))
             self.az = azaz
-            time.sleep(0.01)
-            continue
-
-    def get_az(self):
-        _az = self.encorder_az.output_position_display_value()
-        az = float(_az.strip(b"\x02\x00\r\n").decode())
-        return az
-
-    def get_el(self):
-        while not rospy.is_shutdown():
-            _el = self.encorder_el.output_position_display_value()
-            el = float(_el.strip(b"\x02\x00\r\n").decode())
-            self.pub_el.publish(float(el))
             time.sleep(0.01)
             continue
 
