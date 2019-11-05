@@ -29,7 +29,7 @@ class ND287(object):
 
     def get_el(self):
         _el = self.encorder_el.output_position_display_value()
-        el = float(_az.strip(b"\x02\x00\r\n").decode())
+        el = float(_el.strip(b"\x02\x00\r\n").decode())
         return el
 
     def publish_el(self):
