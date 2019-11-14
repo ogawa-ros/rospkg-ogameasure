@@ -14,14 +14,6 @@ class m100(object):
     def __init__(self):
         self.m100 = ogameasure.Canon.M100_raspi.m100()
         rospy.Subscriber("/dev/m100/capture/savepath",String, self.capture_image)
-        rospy.Subscriber("/necst_telescope/coordinate/apparent_az_cmd",Float64, self.recieve_az)
-        rospy.Subscriber("/necst_telescope/coordinate/apparent_el_cmd",Float64, self.recieve_el)
-
-    def recieve_az(self,q):
-        self.az = round(q.data,5)
-
-    def recieve_el(self,q):
-        self.el = round(q.data,5)
 
     def capture_image(self,q):
         savepath = q.data
