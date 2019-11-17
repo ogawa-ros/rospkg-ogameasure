@@ -4,12 +4,12 @@
         name = "ND287"
         type = "ND287.py">
 
-        <param name="~el_usbport" value="/dev/ttyUSB0" />
-        <param name="~az_usbport" value="/dev/ttyUSB1" />
+        <param name="~el_usbport" value="/dev/ttyUSB1" />
+        <param name="~az_usbport" value="/dev/ttyUSB0" />
 
 
-    <remap from = '/dev/ND287/__port__/el' to = '/dev/ND287/ttyUSB0/el'/>
-    <remap from = '/dev/ND287/__port__/az' to = '/dev/ND287/ttyUSB1/az'/>
+    <remap from = '/dev/ND287/__port__/el' to = '/dev/ND287/ttyUSB1/el'/>
+    <remap from = '/dev/ND287/__port__/az' to = '/dev/ND287/ttyUSB0/az'/>
 
 
   </node>
