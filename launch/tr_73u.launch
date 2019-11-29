@@ -7,9 +7,9 @@
       <param name="~ondotori_usbport" value="/dev/ttyUSB0" />
 
 
-  <remap from = '/dev/ND287/__port__/temperature' to = '/dev/ND287/ttyUSB0/temperature'/>
-  <remap from = '/dev/ND287/__port__/humidity' to = '/dev/ND287/ttyUSB0/humidity'/>
-  <remap from = '/dev/ND287/__port__/pressure' to = '/dev/ND287/ttyUSB0/pressure'/>
+  <remap from = '/dev/TandD/__port__/temperature' to = '/dev/TandD/ttyUSB0/temperature'/>
+  <remap from = '/dev/TandD/__port__/humidity' to = '/dev/TandD/ttyUSB0/humidity'/>
+  <remap from = '/dev/TandD/__port__/pressure' to = '/dev/TandD/ttyUSB0/pressure'/>
 
 
 </node>
