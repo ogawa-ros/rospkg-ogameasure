@@ -13,7 +13,7 @@ from std_msgs.msg import Float64
 class tr_73u(object):
     def __init__(self):
         port = rospy.get_param('~ondotori_usbport')
-        self.ondotori = ogameasure.TandD.tr_73u.tr_73u(port)
+        self.ondotori = ogameasure.TandD.tr_73u(port)
         self.pub_temp = rospy.Publisher("/dev/TandD/__port__/temperature", Float64, queue_size=1)
         self.pub_humid = rospy.Publisher("/dev/TandD/__port__/humidity", Float64, queue_size=1)
         self.pub_press = rospy.Publisher("/dev/TandD/__port__/pressure", Float64, queue_size=1)
