@@ -31,7 +31,7 @@ class tr_73u(object):
             self.pub_humid.publish(humid)
             self.pub_press.publish(press)
             time.sleep(5)
-            return
+        return
 
     def start_thread(self):
         th = threading.Thread(target = self.publish_data)
