@@ -5,6 +5,7 @@ node = "ma24126a"
 import time
 import sys
 import ogameasure
+import threading
 import rospy
 from std_msgs.msg import Float64
 from std_msgs.msg import String
