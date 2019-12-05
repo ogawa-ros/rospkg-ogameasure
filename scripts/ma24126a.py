@@ -33,7 +33,7 @@ class ma24126a(object):
             elif self.switch == 1:
                 for ch in range(0,ch_num):
                     time.sleep(0.1)
-                    power = self.pm[ch].power()
+                    ret = self.pm[ch].power()
                     power = float(ret.decode().split('\n')[0])
                     publist[ch].publish(power)
             continue
