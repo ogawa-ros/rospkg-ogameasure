@@ -25,7 +25,7 @@ class ma24126a(object):
     def switch(self,q):
         self.switch = q.data
 
-    def power(self,ch):
+    def power(self):
         while not rospy.is_shutdown():
             if self.switch == 0:
                 time.sleep(0.001)
