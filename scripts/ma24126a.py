@@ -32,13 +32,10 @@ class ma24126a(object):
                 continue
             elif self.switch == 1:
                 for ch in range(0,ch_num):
-                    try:
-                        time.sleep(0.1)
-                        ret = self.pm[ch].power()
-                        power = float(ret.decode().split('\n')[0])
-                        publist[ch].publish(power)
-                    except:
-                        pass
+                    time.sleep(0.1)
+                    ret = self.pm[ch].power()
+                    power = float(ret.decode().split('\n')[0])
+                    publist[ch].publish(power)
             continue
 
     def zero_set(self, q, args):
