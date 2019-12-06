@@ -51,7 +51,7 @@ class adios(object):
             else:
                 pass
 
-            time.sleep(1e-3)
+            time.sleep(1)
             continue
 
     def regist_set_att(self, req, args):
