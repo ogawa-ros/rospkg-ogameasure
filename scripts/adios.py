@@ -63,6 +63,6 @@ class adios(object):
         return
 
 if __name__ == '__main__':
-    rospy.init_node(node)
+    rospy.init_node(name)
     att = adios()
     rospy.spin()
