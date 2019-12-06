@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg = "rospkg-ogamesure"
+  <node pkg = "rospkg-ogameasure"
         name = "adios"
         type = "adios.py">
         <param name="~host" value="192.168.100.26" />
