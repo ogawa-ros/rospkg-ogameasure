@@ -1,0 +1,15 @@
+<launch>
+
+  <node pkg = "rospkg-ogamesure"
+        name = "adios"
+        type = "adios.py">
+        <param name="~host" value="192.168.100.26" />
+        <param name="~port" value="6001" />
+    <remap from = "/dev/adios/__IP__/att1_cmd" to = "/dev/adios/ip_192_168_100_26/att1_cmd"/>
+    <remap from = "/dev/adios/__IP__/att2_cmd" to = "/dev/adios/ip_192_168_100_26/att1_cmd"/>
+    <remap from = "/dev/adios/__IP__/att1" to = "/dev/adios/ip_192_168_100_26/att1_cmd"/>
+    <remap from = "/dev/adios/__IP__/att2" to = "/dev/adios/ip_192_168_100_26/att1_cmd"/>
+
+  </node>
+
+</launch>

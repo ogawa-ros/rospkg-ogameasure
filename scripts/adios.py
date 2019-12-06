@@ -8,7 +8,7 @@ import queue
 import threading
 
 import rospy
-from std_msgs.msg import Float64
+from std_msgs.msg import Int32
 from std_msgs.msg import String
 from std_msgs.msg import Int32
 
@@ -23,10 +23,10 @@ class adios(object):
         com = ogameasure.ethernet(host, port)
         self.att = ogameasure.SENA.adios(com)
 
-        rospy.Subscriber("/dev/adios/__IP__/att1_power_cmd", Float64, self.regist_set_att, callback_args=1)
-        rospy.Subscriber("/dev/adios/__IP__/att2_power_cmd", Float64, self.regist_set_att, callback_args=2)
-        self.pub1 = rospy.Publisher("/dev/adios/__IP__/att1_power")
-        self.pub2 = rospy.Publisher("/dev/adios/__IP__/att2_power")
+        rospy.Subscriber("/dev/adios/__IP__/att1_cmd", Int32, self.regist_set_att, callback_args=1)
+        rospy.Subscriber("/dev/adios/__IP__/att2_cmd", Int32, self.regist_set_att, callback_args=2)
+        self.pub1 = rospy.Publisher("/dev/adios/__IP__/att1")
+        self.pub2 = rospy.Publisher("/dev/adios/__IP__/att2")
         time.sleep(0.5)
 
         self.th = threading.Thread(target=self.loop)
@@ -50,7 +50,7 @@ class adios(object):
                 f['func'](f['data'], f['num'])
             else:
                 pass
-                
+
             time.sleep(1e-3)
             continue
 
@@ -61,3 +61,8 @@ class adios(object):
     def set_att(self, data, num):
         self.att._set_att(num, data)
         return
+
+if __name__ == '__main__':
+    rospy.init_node(node)
+    att = adios()
+    rospy.spin()
