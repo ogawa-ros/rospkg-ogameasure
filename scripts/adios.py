@@ -25,8 +25,8 @@ class adios(object):
 
         rospy.Subscriber("/dev/adios/__IP__/att1_cmd", Int32, self.regist_set_att, callback_args=1)
         rospy.Subscriber("/dev/adios/__IP__/att2_cmd", Int32, self.regist_set_att, callback_args=2)
-        self.pub1 = rospy.Publisher("/dev/adios/__IP__/att1")
-        self.pub2 = rospy.Publisher("/dev/adios/__IP__/att2")
+        self.pub1 = rospy.Publisher("/dev/adios/__IP__/att1", Int32 , queue_size=1)
+        self.pub2 = rospy.Publisher("/dev/adios/__IP__/att2", Int32 , queue_size=1)
         time.sleep(0.5)
 
         self.th = threading.Thread(target=self.loop)
