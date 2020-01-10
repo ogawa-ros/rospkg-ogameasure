@@ -23,11 +23,18 @@ class tr_73u(object):
     def publish_data(self):
         while not rospy.is_shutdown():
             data = self.ondotori.output_current_data()
-            self.pub_temp.publish(data[0])
-            self.pub_humid.publish(data[1])
-            self.pub_press.publish(data[2])
+            try:
+                d = struct.unpack('26B', data)
+                temp = (d[6]*16**2+d[5]-1000)/10
+                humid = (d[8]*16**2+d[7]-1000)/10
+                press = (d[10]*16**2+d[9])/10
+                self.pub_temp.publish(temp)
+                self.pub_humid.publish(humid)
+                self.pub_press.publish(press)
+            except:
+                pass
             time.sleep(5)
-        return
+        pass
 
     def start_thread(self):
         th = threading.Thread(target = self.publish_data)
