@@ -54,9 +54,12 @@ class fsw0020(object):
                 time.sleep(0.1)
                 continue
             elif self.flag == True:
-                f = self.sg.freq_query()
-                self.freq_pub.publish(float(f))
-                time.sleep(3)
+                try:
+                    f = self.sg.freq_query()
+                    self.freq_pub.publish(float(f))
+                    time.sleep(3)
+                except:
+                    pass
                 continue
             else:
                 pass
