@@ -16,7 +16,7 @@ class fsw0010(object):
         host = rospy.get_param("~host")
         port = rospy.get_param("~port")
         com = ogameasure.ethernet(host, port)
-        self.sg = ogameasure.Phasematrix.fsw0010(com)
+        self.sg = ogameasure.Phasematrix.FSW0010(com)
 
 
         rospy.Subscriber("/dev/fsw0010/__IP__/f_cmd", Float64, self.set_freq)
