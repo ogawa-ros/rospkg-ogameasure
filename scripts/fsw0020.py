@@ -63,7 +63,7 @@ class fsw0020(object):
             continue
 
     def start_thread(self):
-        th = threading.Thread(target = self.pub_tracking)
+        th = threading.Thread(target = self.query_freq)
         th.setDaemon(True)
         th.start()
 
