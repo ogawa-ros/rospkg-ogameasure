@@ -62,7 +62,7 @@ class e8257(object):
             continue
 
     def start_thread(self):
-        th = threading.Thread(target=publish_data)
+        th = threading.Thread(target=self.publish_data)
         th.setDaemon(True)
         th.start()
 
