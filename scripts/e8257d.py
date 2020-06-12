@@ -4,6 +4,7 @@ name = "e8257d"
 
 import time
 import sys
+import threading
 import ogameasure
 import rospy
 from std_msgs.msg import Float64
@@ -17,9 +18,9 @@ class e8257(object):
         com = ogameasure.ethernet(host, port)
         self.sg = ogameasure.Agilent.E8257D(com)
 
-        self.query_freq = rospy.Publisher("/dev/e8257d/__IP__/freq_cmd", Float64, queue_size=1)
-        self.query_power = rospy.Publisher("/dev/e8257d/__IP__/power_cmd", Float64, queue_size=1)
-        self.query_onoff = rospy.Publisher("/dev/e8257d/__IP__/onoff_cmd", String, queue_size=1)
+        self.pub_freq = rospy.Publisher("/dev/e8257d/__IP__/freq_cmd", Float64, queue_size=1)
+        self.pub_power = rospy.Publisher("/dev/e8257d/__IP__/power_cmd", Float64, queue_size=1)
+        self.pub_onoff = rospy.Publisher("/dev/e8257d/__IP__/onoff_cmd", String, queue_size=1)
         rospy.Subscriber("/dev/e8257d/__IP__/freq", Float64, self.set_freq)
         rospy.Subscriber("/dev/e8257d/__IP__/power", Float64, self.set_power)
         rospy.Subscriber("/dev/e8257d/__IP__/onoff", String, self.set_onoff)
@@ -51,7 +52,23 @@ class e8257(object):
         self.query_onoff.publish(onoff)
         return
 
+    def publish_data(self):
+        while not rospy.is_shutdown():
+            freq = self.query_freq()
+            power = self.query_power()
+            self.pub_freq.publish(freq)
+            self.pub_power.publish(power)
+            time.sleep(0.01)
+            continue
+
+    def start_thread(self):
+        th = threading.Thread(target=publish_data)
+        th.setDaemon(True)
+        th.start()
+
+
 if __name__ == '__main__':
     rospy.init_node(name)
     sg = e8257()
+    sg.start_thread()
     rospy.spin()
