@@ -18,12 +18,12 @@ class e8257(object):
         com = ogameasure.ethernet(host, port)
         self.sg = ogameasure.Agilent.E8257D(com)
 
-        self.pub_freq = rospy.Publisher("/dev/e8257d/__IP__/freq_cmd", Float64, queue_size=1)
-        self.pub_power = rospy.Publisher("/dev/e8257d/__IP__/power_cmd", Float64, queue_size=1)
-        self.pub_onoff = rospy.Publisher("/dev/e8257d/__IP__/onoff_cmd", String, queue_size=1)
-        rospy.Subscriber("/dev/e8257d/__IP__/freq", Float64, self.set_freq)
-        rospy.Subscriber("/dev/e8257d/__IP__/power", Float64, self.set_power)
-        rospy.Subscriber("/dev/e8257d/__IP__/onoff", String, self.set_onoff)
+        self.pub_freq = rospy.Publisher("/dev/e8257d/__IP__/freq", Float64, queue_size=1)
+        self.pub_power = rospy.Publisher("/dev/e8257d/__IP__/power", Float64, queue_size=1)
+        self.pub_onoff = rospy.Publisher("/dev/e8257d/__IP__/onoff", String, queue_size=1)
+        rospy.Subscriber("/dev/e8257d/__IP__/freq_cmd", Float64, self.set_freq)
+        rospy.Subscriber("/dev/e8257d/__IP__/power_cmd", Float64, self.set_power)
+        rospy.Subscriber("/dev/e8257d/__IP__/onoff_cmd", String, self.set_onoff)
 
     def set_freq(self,q):
         self.sg.freq_set(q.data)
@@ -39,8 +39,8 @@ class e8257(object):
         return
 
     def query_power(self):
-        freq = self.sg.freq_query()
-        self.pub_freq.publish(freq)
+        power = self.sg.power_query()
+        self.pub_power.publish(power)
         return
 
     def set_onoff(self):
