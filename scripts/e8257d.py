@@ -56,7 +56,7 @@ class e8257(object):
         while not rospy.is_shutdown():
             self.query_freq()
             self.query_power()
-            self.query_onoff()
+            #self.query_onoff()
             time.sleep(0.01)
             continue
 
