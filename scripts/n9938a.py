@@ -7,6 +7,7 @@ import sys
 import ogameasure
 import rospy
 import threading
+from std_msgs.msg import Bool
 from std_msgs.msg import Float64
 from std_msgs.msg  import Float64MultiArray
 
@@ -30,7 +31,7 @@ class n9938a(object):
         rospy.Subscriber("/dev/n9938a/__IP__/vbw_set_cmd", Float64, self.vid_bw_set)
         rospy.Subscriber("/dev/n9938a/__IP__/rbw_query_cmd", Float64, self.vid_bw_query)
 
-        rospy.Subscriber("/dev/n9938a/__IP__/rbw_auto_cmd", Float64, self.resol_bw_auto_set)
+        rospy.Subscriber("/dev/n9938a/__IP__/rbw_auto_cmd", Bool, self.resol_bw_auto_set)
 
         self.flag = True
 
