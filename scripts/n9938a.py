@@ -19,9 +19,9 @@ class n9938a(object):
         self.sa = ogameasure.Keysight.N9938A(com)
 
         self.pub = rospy.Publisher("/dev/n9938a/__IP__/spec",Float64MultiArray,queue_size=1)
-        rospy.Subscriber("/dev/n9938a/__IP__/freq_start_cmd", Float64, self.frequency_set)
-        rospy.Subscriber("/dev/n9938a/__IP__/freq_stop_cmd", Float64, self.frequency_set)
-        rospy.Subscriber("/dev/n9938a/__IP__/freq_center_cmd", Float64, self.frequency_set)
+        rospy.Subscriber("/dev/n9938a/__IP__/freq_start_cmd", Float64, self.start_freq_set)
+        rospy.Subscriber("/dev/n9938a/__IP__/freq_stop_cmd", Float64, self.stop_freq_set)
+        rospy.Subscriber("/dev/n9938a/__IP__/freq_center_cmd", Float64, self.center_freq_set)
         self.flag = True
 
 
@@ -36,17 +36,17 @@ class n9938a(object):
             continue
         return
 
-    def frequency_set(self,startf):
+    def start_freq_set(self,startf):
         self.flag = False
         self.sa.frequency_start_set(startf.data)
         return
 
-    def frequency_set(self,stopf):
+    def stop_freq_set(self,stopf):
         self.flag = False
         self.sa.frequency_stop_set(stopf.data)
         return
 
-    def frequency_set(self,centerf):
+    def center_freq_set(self,centerf):
         self.flag = False
         self.sa.frequency_center_set(centerf.data)
         return
