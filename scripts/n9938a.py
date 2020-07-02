@@ -61,6 +61,52 @@ class n9938a(object):
         return
 
 
+    def resol_bw_set(self,rbw):
+        self.flag = False
+        time.sleep(0.3)
+        self.sa.resolution_bw_set(rbw.data)
+        time.sleep(0.1)
+        self.flag = True
+        return
+
+
+    def resol_bw_query(self):
+        self.flag = False
+        time.sleep(0.3)
+        ret = self.sa.resolution_bw_query()
+        time.sleep(0.1)
+        self.flag = True
+        return ret
+
+
+    def vid_bw_set(self,vbw):
+        self.flag = False
+        time.sleep(0.3)
+        self.sa.video_bw_set(vbw.data)
+        time.sleep(0.1)
+        self.flag = True
+        return
+
+
+    def vid_bw_query(self):
+        self.flag = False
+        time.sleep(0.3)
+        ret = self.sa.video_bw_query()
+        time.sleep(0.1)
+        self.flag = True
+        return ret
+
+
+    def resol_bw_auto_set(self,auto):
+        self.flag = False
+        time.sleep(0.3)
+        self.sa.resolution_bw_auto_set()
+        time.sleep(0.1)
+        self.flag = True
+        return
+
+
+
     def start_thread(self):
         th = threading.Thread(target=self.spec_publisher)
         th.setDaemon(True)
