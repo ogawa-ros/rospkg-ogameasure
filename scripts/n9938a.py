@@ -38,17 +38,26 @@ class n9938a(object):
 
     def start_freq_set(self,startf):
         self.flag = False
+        time.sleep(0.01)
         self.sa.frequency_start_set(startf.data)
+        time.sleep(0.1)
+        self.flag = True
         return
 
     def stop_freq_set(self,stopf):
         self.flag = False
+        time.sleep(0.01)
         self.sa.frequency_stop_set(stopf.data)
+        time.sleep(0.1)
+        self.flag = True
         return
 
     def center_freq_set(self,centerf):
         self.flag = False
+        time.sleep(0.01)
         self.sa.frequency_center_set(centerf.data)
+        time.sleep(0.1)
+        self.flag = True
         return
 
 
