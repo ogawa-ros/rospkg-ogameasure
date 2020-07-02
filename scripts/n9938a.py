@@ -32,7 +32,7 @@ class n9938a(object):
                 self.pub.publish(spec)
             else:
                 pass
-            time.sleep(0.001)
+            time.sleep(0.1)
             continue
         return
 
