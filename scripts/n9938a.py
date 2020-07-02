@@ -12,7 +12,7 @@ from std_msgs.msg  import Float64MultiArray
 
 class n9938a(object):
 
-    def __init__(self)
+    def __init__(self):
         host = rospy.getparam("~host")
         port = rospy.getparam("~port")
         com = ogameasure.ethernet(host,port)
