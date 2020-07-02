@@ -27,7 +27,7 @@ class n9938a(object):
 
     def spec_publisher(self):
         while not rospy.is_shutdown():
-            if self.flag = True:
+            if self.flag == True:
                 spec = Float64MultiArray(data=self.sa.trace_data_query())
                 self.pub.publish(spec)
             else:
