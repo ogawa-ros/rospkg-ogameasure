@@ -1,0 +1,12 @@
+<launch>
+
+  <node pkg = "rospkg-ogameasure"
+        name = "n9938a"
+        type = "n9938a.py">
+        <param name="~host" value="192.168.100.171" />
+        <param name="~port" value="5025" />
+    <remap from = '/dev/n9938a/__IP__/spec' to = '/dev/n9938a/ip_192_168_100_171/spec'/>
+
+  </node>
+
+</launch>
