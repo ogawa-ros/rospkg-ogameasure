@@ -102,7 +102,7 @@ class n9938a(object):
         self.pub2.publish(ret)
         time.sleep(0.1)
         self.flag = True
-        return
+        return ret
 
 
     def vid_bw_set(self,vbw):
@@ -131,7 +131,7 @@ class n9938a(object):
         self.pub3.publish(ret)
         time.sleep(0.1)
         self.flag = True
-        return
+        return ret
 
 
 
