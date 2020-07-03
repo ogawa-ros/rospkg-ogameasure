@@ -96,7 +96,6 @@ class n9938a(object):
         return
 
 
-
 """
     def resol_bw_query(self):
         self.flag = False
