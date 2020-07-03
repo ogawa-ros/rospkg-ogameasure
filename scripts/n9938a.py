@@ -137,7 +137,7 @@ class n9938a(object):
 
 
 
-"""
+        """
     def vid_bw_query(self):
 
         self.flag = False
@@ -147,7 +147,7 @@ class n9938a(object):
         time.sleep(0.1)
         self.flag = True
         return vbw
-"""
+        """
 
 
     def resol_bw_auto_set(self,auto):
