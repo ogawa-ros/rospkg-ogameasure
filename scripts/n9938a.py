@@ -120,7 +120,6 @@ class n9938a(object):
         return
 
 
-
     def start_thread(self):
         th = threading.Thread(target=self.spec_publisher)
         th.setDaemon(True)
