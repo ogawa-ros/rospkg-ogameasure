@@ -30,8 +30,8 @@ class n9938a(object):
         rospy.Subscriber("/dev/n9938a/__IP__/rbw_set_cmd", Float64, self.resol_bw_set)
         rospy.Subscriber("/dev/n9938a/__IP__/vbw_set_cmd", Float64, self.vid_bw_set)
         rospy.Subscriber("/dev/n9938a/__IP__/rbw_auto_cmd", Int32, self.resol_bw_auto_set)
-        rospy.Subscriber("/dev/n9938a/__IP__/rbw_query_cmd", Float64, self.resol_bw_query)
-        rospy.Subscriber("/dev/n9938a/__IP__/vbw_query_cmd", Float64, self.vid_bw_query)
+        #rospy.Subscriber("/dev/n9938a/__IP__/rbw_query_cmd", Float64, self.resol_bw_query)
+        #rospy.Subscriber("/dev/n9938a/__IP__/vbw_query_cmd", Float64, self.vid_bw_query)
 
         self.flag = True
 
@@ -82,13 +82,31 @@ class n9938a(object):
 
     def resol_bw_query(self):
         self.flag = False
+        rospy.Subscriber("/dev/n9938a/__IP__/rbw_query_cmd", Float64, self.callback_rbw_query)
+        self.flag = True
+        return
+
+    def callback_rbw_query(self):
+        self.flag = False
         time.sleep(0.3)
-        rbw = sa.resolution_bw_query()
-        self.pub_rbw.publish(rbw)
+        ret = sa.resolution_bw_query()
+        self.pub_rbw.publish(ret)
         time.sleep(0.1)
         self.flag = True
-        return rbw
+        return
 
+
+
+"""
+    def resol_bw_query(self):
+        self.flag = False
+        time.sleep(0.3)
+        ret = sa.resolution_bw_query()
+        self.pub_rbw.publish(ret)
+        time.sleep(0.1)
+        self.flag = True
+        return
+"""
 
     def vid_bw_set(self,vbw):
         self.flag = False
@@ -99,16 +117,39 @@ class n9938a(object):
         return
 
 
+
+
+
+        def vid_bw_query(self):
+            self.flag = False
+            rospy.Subscriber("/dev/n9938a/__IP__/vbw_query_cmd", Float64, self.callback_vbw_query)
+            self.flag = True
+            return
+
+        def callback_vbw_query(self):
+            self.flag = False
+            time.sleep(0.3)
+            ret = sa.video_bw_query()
+            self.pub_rbw.publish(ret)
+            time.sleep(0.1)
+            self.flag = True
+            return
+
+
+
+
+
+"""
     def vid_bw_query(self):
 
         self.flag = False
         time.sleep(0.3)
         vbw = self.sa.video_bw_query()
-        self.pub_vbw.publish(vbw)
+        self.pub_vbw.publish(vbw.data)
         time.sleep(0.1)
         self.flag = True
         return vbw
-
+"""
 
 
     def resol_bw_auto_set(self,auto):
