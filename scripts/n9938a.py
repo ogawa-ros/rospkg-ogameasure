@@ -96,7 +96,7 @@ class n9938a(object):
         return
 
 
-"""
+        """
     def resol_bw_query(self):
         self.flag = False
         time.sleep(0.3)
@@ -105,7 +105,14 @@ class n9938a(object):
         time.sleep(0.1)
         self.flag = True
         return
-"""
+        """
+    def vid_bw_set(self,vbw):
+        self.flag = False
+        time.sleep(0.3)
+        self.sa.video_bw_set(vbw.data)
+        time.sleep(0.1)
+        self.flag = True
+        return
 
 
     def vid_bw_query(self):
@@ -114,13 +121,7 @@ class n9938a(object):
         self.flag = True
         return
 
-    def vid_bw_set(self,vbw):
-        self.flag = False
-        time.sleep(0.3)
-        self.sa.video_bw_set(vbw.data)
-        time.sleep(0.1)
-        self.flag = True
-        return
+
 
 
     def callback_vbw_query(self):
