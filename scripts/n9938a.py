@@ -114,7 +114,7 @@ class n9938a(object):
     def resol_bw_auto_set(self,auto):
         self.flag = False
         time.sleep(0.3)
-        self.sa.resolution_bw_auto_set(auto)
+        ret = Int(self.sa.resolution_bw_auto_set(auto))
         time.sleep(0.1)
         self.flag = True
         return
