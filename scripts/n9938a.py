@@ -82,7 +82,9 @@ class n9938a(object):
 
     def resol_bw_query(self):
         self.flag = False
+        time.sleep(0.3)
         rospy.Subscriber("/dev/n9938a/__IP__/rbw_query_cmd", Float64, self.callback_rbw_query)
+        time.sleep(0.1)
         self.flag = True
         return
 
@@ -117,7 +119,9 @@ class n9938a(object):
 
     def vid_bw_query(self):
         self.flag = False
+        time.sleep(0.3)
         rospy.Subscriber("/dev/n9938a/__IP__/vbw_query_cmd", Float64, self.callback_vbw_query)
+        rime.sleep(0.1)
         self.flag = True
         return
 
