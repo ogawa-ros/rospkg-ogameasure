@@ -127,7 +127,7 @@ class n9938a(object):
 
         self.flag = False
         time.sleep(0.3)
-        ret = self.sa.video_bw_query()
+        ret = Float64(self.sa.video_bw_query())
         self.pub3.publish(ret)
         time.sleep(0.1)
         self.flag = True
