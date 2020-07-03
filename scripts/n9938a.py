@@ -98,7 +98,7 @@ class n9938a(object):
 
         self.flag = False
         time.sleep(0.3)
-        ret = sa.resolution_bw_query()
+        ret = Float(rbw=sa.resolution_bw_query())
         self.pub2.publish(ret)
         time.sleep(0.1)
         self.flag = True
