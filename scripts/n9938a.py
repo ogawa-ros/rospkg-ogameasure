@@ -100,7 +100,7 @@ class n9938a(object):
         return
         """
 
-    def resol_bw_query(self,d):
+    def resol_bw_query(self):
         self.flag = False
         time.sleep(0.3)
         ret = self.sa.resolution_bw_query()
