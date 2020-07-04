@@ -22,8 +22,8 @@ class n9938a(object):
         self.sa = ogameasure.Keysight.N9938A(com)
 
         self.pub_data = rospy.Publisher("/dev/n9938a/__IP__/spec",Float64MultiArray,queue_size=1)
-        self.pub_rbw = rospy.Publisher("/dev/n9938a/__IP__/rbw_query_back",Float64,queue_size=1)
-        self.pub_vbw = rospy.Publisher("/dev/n9938a/__IP__/vbw_query_back",Float64,queue_size=1)
+        self.pub_rbw = rospy.Publisher("/dev/n9938a/__IP__/rbw_query",Float64,queue_size=1)
+        self.pub_vbw = rospy.Publisher("/dev/n9938a/__IP__/vbw_query",Float64,queue_size=1)
 
         rospy.Subscriber("/dev/n9938a/__IP__/freq_start_cmd", Float64, self.start_freq_set)
         rospy.Subscriber("/dev/n9938a/__IP__/freq_stop_cmd", Float64, self.stop_freq_set)
@@ -31,8 +31,9 @@ class n9938a(object):
         rospy.Subscriber("/dev/n9938a/__IP__/rbw_set_cmd", Float64, self.resol_bw_set)
         rospy.Subscriber("/dev/n9938a/__IP__/vbw_set_cmd", Float64, self.vid_bw_set)
         rospy.Subscriber("/dev/n9938a/__IP__/rbw_auto_cmd", Int32, self.resol_bw_auto_set)
-        rospy.Subscriber("/dev/n9938a/__IP__/rbw_query_cmd", Float64, self.resol_bw_query)
-        rospy.Subscriber("/dev/n9938a/__IP__/vbw_query_cmd", Float64, self.vid_bw_query)
+        rospy.Subscriber("/dev/n9938a/__IP__/rbw_query", Float64, self.resol_bw_query)
+        rospy.Subscriber("/dev/n9938a/__IP__/vbw_query", Float64, self.vid_bw_query)
+
 
         self.flag = True
 
@@ -103,10 +104,10 @@ class n9938a(object):
         self.flag = False
         time.sleep(0.3)
         ret = sa.resolution_bw_query()
-        ret = self.pub_rbw.publish(ret)
+        self.pub_rbw.publish(ret.data)
         time.sleep(0.1)
         self.flag = True
-        return ret
+        return
 
 
     def vid_bw_set(self,vbw):
