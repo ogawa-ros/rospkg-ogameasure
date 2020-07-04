@@ -142,12 +142,12 @@ class n9938a(object):
 
         self.flag = False
         time.sleep(0.3)
-        ret = Float64(self.sa.video_bw_query())
+        vbw = Float64(self.sa.video_bw_query())
         self.pub_vbw.publish(vbw)
         time.sleep(0.1)
         self.flag = True
         return vbw
-        
+
 
     def resol_bw_auto_set(self,auto):
         self.flag = False
