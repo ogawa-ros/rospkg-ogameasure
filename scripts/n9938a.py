@@ -104,7 +104,7 @@ class n9938a(object):
         self.flag = False
         time.sleep(0.3)
         ret = self.sa.resolution_bw_query()
-        self.resol_bw_query.publish(ret)
+        self.pub_rbw.publish(ret)
         time.sleep(0.1)
         self.flag = True
         return
@@ -146,7 +146,7 @@ class n9938a(object):
         self.flag = False
         time.sleep(0.3)
         ret = self.sa.video_bw_query()
-        self.vid_bw_query.publish(ret)
+        self.pub_vbw.publish(ret)
         time.sleep(0.1)
         self.flag = True
         return vbw
