@@ -103,7 +103,7 @@ class n9938a(object):
     def resol_bw_query(self,ret):
         self.flag = False
         time.sleep(0.3)
-        ret = self.sa.resolution_bw_query()
+        ret = Float64(self.sa.resolution_bw_query())
         self.pub_rbw.publish(ret)
         time.sleep(0.1)
         self.flag = True
@@ -127,9 +127,6 @@ class n9938a(object):
         self.flag = True
         return
 
-
-
-
     def callback_vbw_query(self):
         self.flag = False
         time.sleep(0.3)
@@ -145,7 +142,7 @@ class n9938a(object):
 
         self.flag = False
         time.sleep(0.3)
-        ret = self.sa.video_bw_query()
+        ret = Float64(self.sa.video_bw_query())
         self.pub_vbw.publish(ret)
         time.sleep(0.1)
         self.flag = True
@@ -156,7 +153,7 @@ class n9938a(object):
     def resol_bw_auto_set(self,auto):
         self.flag = False
         time.sleep(0.3)
-        ret = Int32(self.sa.resolution_bw_auto_set(auto.data))
+        self.sa.resolution_bw_auto_set(auto.data)
         time.sleep(0.1)
         self.flag = True
         return
