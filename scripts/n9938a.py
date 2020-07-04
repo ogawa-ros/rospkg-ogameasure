@@ -103,12 +103,8 @@ class n9938a(object):
     def resol_bw_query(self,ret):
         self.flag = False
         time.sleep(0.3)
-        ret = self.sa.resolution_bw_query()
-        ret = ret.strip().split(',')
-        ret = Float64(self.sa.resolution_bw_query())
-
-        
-        self.pub_rbw.publish(ret)
+        rbw = self.sa.resolution_bw_query()
+        self.pub_rbw.publish(rbw)
         time.sleep(0.1)
         self.flag = True
         return
