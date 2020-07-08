@@ -64,6 +64,7 @@ class pmx18_2A(object):
 
     def current_set(self,curr):
         self.flag = False
+        time.sleep(0.02)
         self.ps.set_A(curr.data)
         time.sleep(0.01)
         self.flag = True
