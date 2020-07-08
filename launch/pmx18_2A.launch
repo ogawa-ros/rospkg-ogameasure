@@ -1,0 +1,14 @@
+<launch>
+
+  <node pkg = "rospkg-ogameasure"
+        name = "pmx18_2A"
+        type = "pmx18_2A.py">
+        <param name="~host" value="192.168.100.175" />
+        <param name="~port" value="5025" />
+    <remap from = '/dev/pmx18_2A/__IP__/onoff' to = '/dev/n9938a/ip_192_168_100_175/onoff'/>
+    <remap from = '/dev/pmx18_2A/__IP__/curr' to = '/dev/n9938a/ip_192_168_100_175/curr'/>
+    <remap from = '/dev/pmx18_2A/__IP__/volt' to = '/dev/n9938a/ip_192_168_100_175/volt'/>
+
+  </node>
+
+</launch>
