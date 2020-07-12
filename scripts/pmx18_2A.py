@@ -35,7 +35,7 @@ class pmx18(object):
     def parameter_publisher(self):
         while not rospy.is_shutdown():
             if self.flag == True:
-                onoff = Int32(data=self.ps.query_A)
+                onoff = Int32(data=self.ps.query_output_onoff)
                 current = Float64(data=self.ps.query_A)
                 voltage = Float64(data=self.ps.query_V)
                 self.pub_onoff.publish(onoff)
