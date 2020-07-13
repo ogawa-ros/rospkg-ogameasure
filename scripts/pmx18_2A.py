@@ -12,7 +12,7 @@ from std_msgs.msg import Int32
 from std_msgs.msg import Float64
 from std_msgs.msg import Bool
 
-class pmx18(object):
+class pmx18_2A(object):
 
     def __init__(self):
         host = rospy.get_param("~host")
@@ -35,9 +35,9 @@ class pmx18(object):
     def parameter_publisher(self):
         while not rospy.is_shutdown():
             if self.flag == True:
-                onoff = Int32(data=self.ps.query_output_onoff)
-                current = Float64(data=self.ps.query_A)
-                voltage = Float64(data=self.ps.query_V)
+                onoff = int(self.ps.query_output_onoff())
+                current = float(self.ps.query_A())
+                voltage = float(self.ps.query_V())
                 self.pub_onoff.publish(onoff)
                 self.pub_curr.publish(current)
                 self.pub_volt.publish(voltage)
@@ -48,22 +48,23 @@ class pmx18(object):
         return
 
 
-    def output_on_set(self):
+    def output_on_set(self,q):
         self.flag = False
         self.ps.set_ON()
         time.sleep(0.01)
         self.flag = True
         return
 
-    def output_off_set(self):
+    def output_off_set(self,q):
         self.flag = False
         self.ps.set_OFF()
         time.sleep(0.01)
         self.flag = True
         return
 
-    def corrent_set(self,curr):
+    def current_set(self,curr):
         self.flag = False
+        time.sleep(0.02)
         self.ps.set_A(curr.data)
         time.sleep(0.01)
         self.flag = True
