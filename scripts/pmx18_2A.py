@@ -36,8 +36,8 @@ class pmx18_2A(object):
         while not rospy.is_shutdown():
             if self.flag == True:
                 onoff = int(self.ps.query_output_onoff())
-                current = float(self.ps.query_A())
-                voltage = float(self.ps.query_V())
+                current = float(self.ps.query_curr())
+                voltage = float(self.ps.query_volt())
                 self.pub_onoff.publish(onoff)
                 self.pub_curr.publish(current)
                 self.pub_volt.publish(voltage)
