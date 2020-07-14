@@ -65,14 +65,14 @@ class pmx18_2A(object):
     def current_set(self,curr):
         self.flag = False
         time.sleep(0.02)
-        self.ps.set_A(curr.data)
+        self.ps.set_curr(curr.data)
         time.sleep(0.01)
         self.flag = True
         return
 
     def volt_set(self,volt):
         self.flag = False
-        self.ps.set_V(volt.data)
+        self.ps.set_volt(volt.data)
         time.sleep(0.01)
         self.flag = True
         return
