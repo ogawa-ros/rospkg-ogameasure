@@ -34,8 +34,7 @@ class l218(object):
                     self.pub_list[i].publish(temp[i])
                     time.sleep(2)
 
-            except SocketError as e:
-                if e.errno != errno.ECONNRESET:
+            except:
                     time.sleep(60)
                     self.connect()
                 pass # Handle error here.
