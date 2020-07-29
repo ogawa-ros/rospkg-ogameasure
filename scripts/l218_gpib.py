@@ -37,7 +37,6 @@ class l218(object):
             except:
                     time.sleep(60)
                     self.connect()
-                pass # Handle error here.
             continue
 
     def start_thread(self):
