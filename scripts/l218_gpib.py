@@ -23,7 +23,7 @@ class l218(object):
         self.pub_list = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
     def connect(self):
-        self.com = ogameasure.gpib_prologix(self.host, self.gpibport)
+        com = ogameasure.gpib_prologix(self.host, self.gpibport)
         self.l218 = ogameasure.Lakeshore.model218(com)
 
     def temp_publisher(self,ch=0):
