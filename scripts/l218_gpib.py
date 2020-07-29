@@ -34,9 +34,10 @@ class l218(object):
                     self.pub_list[i].publish(temp[i])
                     time.sleep(2)
 
-            except:
-                    time.sleep(60)
-                    self.connect()
+            except SocketError as e:
+                if e.errno != errno.ECONNRESET:
+                    raise # Not error we are looking for
+                pass # Handle error here.
             continue
 
     def start_thread(self):
