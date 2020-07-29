@@ -15,7 +15,7 @@ class l218(object):
     def __init__(self):
         self.host = rospy.get_param("~host")
         self.gpibport = rospy.get_param("~gpibport")
-        self.com = ogameasure.gpib_prologix(host, gpibport)
+        self.com = ogameasure.gpib_prologix(self.host, self.gpibport)
         #print(host)
         #print(gpibport)
         self.l218 = ogameasure.Lakeshore.model218(com)
