@@ -10,6 +10,8 @@ import threading
 from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Int32
+from socket import error as SocketError
+import errno
 
 class l218(object):
     def __init__(self):
