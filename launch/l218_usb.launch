@@ -3,7 +3,7 @@
   <node pkg = "rospkg-ogameasure"
         name = "l218_usb"
         type = "l218_usb.py">
-        <param name="~serial" value="AK06H7RQ" />
+        <param name="~port" value="/dev/ttyUSB0" />
         <param name="~ch" value="4" />
 
     <remap from = '/dev/218/__IP__/temp/ch1' to = '/dev/218/AK06H7RQ/temp/ch1'/>

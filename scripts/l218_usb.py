@@ -6,6 +6,7 @@ import time
 import sys
 import ogameasure
 import rospy
+import serial
 import threading
 from std_msgs.msg import Float64
 from std_msgs.msg import String
@@ -13,11 +14,10 @@ from std_msgs.msg import Int32
 
 class l218(object):
     def __init__(self):
-        serial = rospy.get_param("~serial")
-        com = ogameasure.usb(serial)
-        self.l218 = ogameasure.Lakeshore.model218_pre(com)
+        port = rospy.get_param("~port")
+        self.l218 = ogameasure.Lakeshore.model218_usb(port)
 
-        self.pub_list = [rospy.Publisher("/dev/218/__IP__/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
+        self.pub_list = [rospy.Publisher("/dev/218/"+str(port)+"/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
     def temp_publisher(self,ch=0):
         while not rospy.is_shutdown():
