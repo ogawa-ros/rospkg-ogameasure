@@ -17,7 +17,7 @@ class l218(object):
         port = rospy.get_param("~port")
         self.l218 = ogameasure.Lakeshore.model218_usb(port)
 
-        self.pub_list = [rospy.Publisher("/dev/218/"+str(port)+"/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
+        self.pub_list = [rospy.Publisher("/dev/218/temp/ch{0}".format(ch), Float64, queue_size=1) for ch in range(1,ch_num+1)]
 
     def temp_publisher(self,ch=0):
         while not rospy.is_shutdown():
