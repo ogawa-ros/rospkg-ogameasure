@@ -27,6 +27,8 @@ class fsw0010(object):
 
         self.flag = True
 
+        self.sg.use_external_reference_source()
+
     def set_freq(self,q):
         self.flag = False
         self.sg.freq_set(q.data)
