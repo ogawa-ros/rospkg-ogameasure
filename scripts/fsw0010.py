@@ -59,11 +59,11 @@ class fsw0010(object):
                 continue
             elif self.flag == True:
                 try:
-                    f = self.sg.freq_query()
+                    f = self.sg.output_query()
                     self.freq_pub.publish(float(f))
                     time.sleep(3)
 
-                    f = self.sg.onoff_query()
+                    f = self.sg.output_query()
                     self.onoff_pub.publish(float(f))
                     time.sleep(3)
                 except:
