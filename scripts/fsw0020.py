@@ -60,7 +60,7 @@ class fsw0020(object):
 
             elif self.flag == True:
                 try:
-                    f = self.sg.output_query()
+                    f = self.sg.freq_query()
                     self.freq_pub.publish(float(f))
                     time.sleep(3)
 
