@@ -64,8 +64,8 @@ class fsw0020(object):
                     self.freq_pub.publish(float(f))
                     time.sleep(3)
 
-                    f = self.sg.output_query()
-                    self.onoff_pub.publish(float(f))
+                    onoff = self.sg.output_query()
+                    self.onoff_pub.publish(float(onoff))
                     time.sleep(3)
 
                 except:
