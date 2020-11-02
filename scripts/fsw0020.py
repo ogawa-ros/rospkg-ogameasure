@@ -23,7 +23,8 @@ class fsw0020(object):
         rospy.Subscriber("/dev/fsw0020/__IP__/power_cmd", Float64, self.set_power)
         rospy.Subscriber("/dev/fsw0020/__IP__/onoff_cmd", String, self.set_onoff)
 
-        self.freq_pub = rospy.Publisher("/dev/fsw0020/__IP__/freq",Float64,queue_size=1)
+        self.freq_pub  = rospy.Publisher("/dev/fsw0020/__IP__/freq" ,Float64,queue_size=1)
+        self.onoff_pub = rospy.Publisher("/dev/fsw0020/__IP__/onoff",Float64,queue_size=1)
 
         self.flag = True
 
@@ -56,11 +57,17 @@ class fsw0020(object):
             if self.flag == False:
                 time.sleep(0.1)
                 continue
+
             elif self.flag == True:
                 try:
                     f = self.sg.freq_query()
                     self.freq_pub.publish(float(f))
                     time.sleep(3)
+
+                    f = self.sg.onoff_query()
+                    self.onoff_pub.publish(float(f))
+                    time.sleep(3)
+
                 except:
                     pass
                 continue
