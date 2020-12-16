@@ -37,21 +37,24 @@ class adios(object):
 
     def loop(self):
         while not rospy.is_shutdown():
-            power1 = self.att.get_att1()
-            time.sleep(0.01)
-            power2 = self.att.get_att2()
-            time.sleep(0.01)
+            try:
+                power1 = self.att.get_att1()
+                time.sleep(0.01)
+                power2 = self.att.get_att2()
+                time.sleep(0.01)
 
-            self.pub1.publish(power1)
-            self.pub2.publish(power2)
+                self.pub1.publish(power1)
+                self.pub2.publish(power2)
 
-            if not self.func_queue.empty():
-                f = self.func_queue.get()
-                f['func'](f['data'], f['num'])
-            else:
-                pass
+                if not self.func_queue.empty():
+                    f = self.func_queue.get()
+                    f['func'](f['data'], f['num'])
+                else:
+                    pass
 
-            time.sleep(1)
+                time.sleep(1)
+            except: 
+                print("somthing error")
             continue
 
     def regist_set_att(self, req, args):
